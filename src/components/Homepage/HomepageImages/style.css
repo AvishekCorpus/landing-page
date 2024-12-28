@@ -1,0 +1,170 @@
+.homepage-carousel-container {
+  margin: 0 auto;
+  padding: 0; 
+  position: relative; 
+  overflow: hidden;
+}
+
+.homepage-carousel-image {
+  width: 100vw; 
+  height: 70vh; 
+  object-fit: cover;
+  border-radius: 0;
+  z-index: -1;
+}
+
+@media (max-width: 1200px) {
+  .homepage-carousel-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .homepage-carousel-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-carousel-container {
+    max-width: 100%;
+  }
+  .homepage-carousel-image {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .homepage-carousel-container {
+    max-width: 100%;
+  }
+  .homepage-carousel-image {
+    height: 50vh;
+  }
+}
+
+/* .slick-arrow {
+  padding: 5px !important;
+  background-color: blue !important;
+  font-size: 1.2rem !important;
+}
+
+.slick-next, .slick-prev {
+  background-color: red !important;
+  opacity: 1 !important;
+} */
+
+/* Custom arrow styles */
+.slick-prev,
+.slick-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  font-size: 18px !important;
+  color: var(--orange) !important;
+  background: white !important; /* Orange background */
+  border-radius: 50%;
+  display: flex !important;
+  opacity: 1 !important;
+  transform: scale(1.5) !important;
+  text-align: center;
+  padding: 10.5px !important;
+  border: 3px solid var(--orange) !important;
+}
+.slick-prev {
+  left: -50px;
+  margin-left: 3rem !important;
+}
+.slick-next {
+  right: -50px;
+  margin-right: 3rem !important;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background: var(--orange); 
+  color: white !important;
+  background: var(--orange) !important; /* Orange background */
+}
+.slick-arrow::before {
+  display: none; 
+}
+.slick-prev::after {
+  margin-left: 4.2px !important;
+  margin-top: 2.7px !important;
+}
+.slick-next::after {
+  margin-left: 1px !important;
+  margin-top: 2.4px !important;
+}
+
+@media (max-width: 900px) {
+  .slick-prev {
+    margin-left: 1.5rem !important;
+  }
+  .slick-next {
+    margin-right: 1.5rem !important;
+  }
+}
+@media (max-width: 500px) {
+  .slick-prev {
+    margin-left: 0.7rem !important;
+  }
+  .slick-next {
+    margin-right: 0.7rem !important;
+  }
+}
+
+/* Carousel container styles */
+.homepage-carousel-container {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.homepage-carousel-slide {
+  position: relative; /* Needed for absolute positioning of caption */
+}
+
+.homepage-carousel-image {
+  width: 100vw;
+  height: 70vh;
+  object-fit: cover;
+  border-radius: 0;
+  z-index: -1;
+}
+
+.homepage-carousel-caption {
+  position: absolute;
+  top: 20%; /* Adjust distance from the top */
+  left: 10%; /* Adjust distance from the left */
+  background-color: white; /* Semi-transparent background */
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 1;
+  width: 400px;
+  span {
+    color: var(--orange);
+    font-weight: bold;
+  }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepage-carousel-image {
+    height: 50vh;
+  }
+  .homepage-carousel-caption {
+    font-size: 14px; /* Smaller caption text for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .homepage-carousel-caption {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}

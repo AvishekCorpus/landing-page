@@ -1,0 +1,114 @@
+.division-container {
+  padding: 2rem;
+  background-image: url("../../../assets/images/division.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: #EDF7F796;
+  margin-bottom: 2rem;
+}
+.divisions {
+  width: 70%;
+  margin:0 auto
+}
+.division-heading{
+  width: 100%;
+  font-size: 2rem;
+  color: var(--brand-color-green);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 8px;
+  margin: 0 1rem;
+}
+
+.dot {
+  width: 20px;
+  height: 5px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--orange);
+}
+
+.ant-btn-text {
+  background: transparent;
+  border: none;
+}
+
+.ant-btn-text:disabled {
+  color: #d9d9d9;
+}
+
+.custom-dots .slick-active button {
+  background-color: var(--brand-color-green-shade1);
+}
+
+.custom-pagination .ant-btn-text {
+  color: var(--orange); /* Set the color for the arrows */
+}
+
+.custom-pagination .ant-btn-text:hover {
+  color: var(--orange); /* Set the hover color for the arrows */
+}
+
+.custom-pagination .ant-btn-text:disabled {
+  color: #d9d9d9; /* Set the disabled state color */
+}
+.custom-pagination .ant-btn-text:focus {
+  color: var(--orange); /* Set the disabled state color */
+}
+/* Division card */
+.division-card-title {
+  width: 100;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--orange);
+}
+.division-card-description {
+  width: 100%;
+  text-align: center;
+  line-height: 2;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 120px;
+}
+.know-more {
+  padding:0.7rem;
+  background-color: var(--brand-color-green);
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.know-more:hover {
+  background-color: var(--brand-color-green-shade1) !important;
+  color: white !important;
+  border-color: var(--brand-color-green-shade1) !important;
+}
+
+@media (max-width: 1100px) {
+  .divisions {
+    width: 100%;
+    margin:0 auto;
+  }
+}

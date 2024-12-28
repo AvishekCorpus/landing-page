@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+}
+* {
+  font-family: "Manrope";
+  padding:0;
+  margin:0;
+}
+
+:root {
+  --brand-color-green: #00A5A7;
+  --brand-color-green-shade1: #00CCD3;
+  --background1:#E4FAF97D;
+  --polar-green : #73D13D;
+  --orange : #ff9800;
+}
+
+html,
+body {
+  height: 100%; 
+  margin: 0; 
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0px; 
+  height: 0px;
+}
+
+.iso-container{
+  background-color: var(--polar-green);
+  font-size: 12px;
+  color: white;
+  padding: 7px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  * {
+    scrollbar-color: #cccccc #e6e6e6; 
+    scrollbar-width: thin;
+  }
+}
+

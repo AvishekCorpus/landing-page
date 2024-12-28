@@ -1,0 +1,150 @@
+.featured-product-container {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background1);
+  padding-bottom: 4rem;
+}
+
+.featured-title {
+  color: #009688;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  span {
+    color: var(--orange);
+  }
+}
+
+.carousel-container {
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  gap: 1rem;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16px; /* Add spacing between cards */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-more {
+  font-size: 12px;
+  color: #009688;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card-more:hover {
+  color: #00695c;
+}
+
+.featured-card img {
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-division {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-size: 10rem;
+}
+
+.custom-prev {
+  left: -30px;
+}
+
+.custom-next {
+  right: -30px;
+}
+
+.product-division {
+    width: 100%;
+    text-align: start;
+    div:first-child {
+        color: gray;
+    }
+    div:nth-child(2) {
+        font-weight: bold;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .carousel-container {
+    width: 90%;
+  }
+
+  .featured-card {
+    margin: 0 12px;
+  }
+
+  .card-title,
+  .card-division {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 600px;
+  }
+
+  .featured-card {
+    margin: 0 8px;
+  }
+
+  .carousel-container .slick-slide {
+    max-width: 50%; /* Show 2 cards at a time */
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-container {
+    max-width: 350px;
+  }
+
+  .carousel-container .slick-slide {
+    max-width: 100%; /* Show 1 card at a time */
+  }
+
+  .card-title,
+  .card-division {
+    font-size: 12px;
+  }
+}
