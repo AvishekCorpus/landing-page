@@ -43,9 +43,9 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
     if (width >= 1200) {
       setCardWidth(240);
     } else if (width >= 768) {
-      setCardWidth(285);
+      setCardWidth(240);
     } else {
-      setCardWidth(275);
+      setCardWidth(240);
     }
   };
 

@@ -148,8 +148,6 @@ const TaglineSection: React.FC<Props> = ({ videoState }) => {
               </button>
             )}
           </div>
-          <div className="tagline-image-bottomhighlighter"></div>
-          <div className="tagline-image-tophighlighter"></div>
         </div>
       </div>
     </div>

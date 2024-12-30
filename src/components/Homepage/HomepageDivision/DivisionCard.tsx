@@ -17,10 +17,10 @@ const DivisionCard: React.FC<Props> = ({ imageUrl, title, description }) => {
       const width = window.innerWidth;
       if (width >= 1200) {
         setCardWidth(300); // Large screens (Desktop)
-      } else if (width >= 768) {
+      } else if (width >= 900) {
         setCardWidth(220); // Tablet
       } else {
-        setCardWidth(220); // Mobile
+        setCardWidth(280); // Mobile
       }
     };
 

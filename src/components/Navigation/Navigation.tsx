@@ -67,8 +67,8 @@ const Navigation: React.FC = () => {
               ))}
             </ul>
             <div className="contact-info">
-              <p>info@alniche.com</p>
-              <p>1800-572-2011</p>
+              <p>info@corpuslifescience.com</p>
+              <p>+91 8420112846 | +91 8902036365 <br /> <span style={{marginTop:"0.5rem"}}>+91 33 2694 4604 / 4605</span></p>
             </div>
           </div>
         )}

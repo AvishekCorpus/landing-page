@@ -159,6 +159,7 @@
   }
   .homepage-carousel-caption {
     font-size: 14px; /* Smaller caption text for smaller screens */
+    width: 70%;
   }
 }
 

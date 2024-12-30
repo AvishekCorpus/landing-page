@@ -64,7 +64,7 @@ const Footer2: React.FC = () => {
             Contact
           </Button>
         </div>
-        <div>Copyright ©2024 Produced by company name</div>
+        <div style={{textAlign:'center'}}>Copyright ©2024 Produced by company name</div>
       </div>
       <div className="footer2-wrapper2">
         <Button size={"middle"}>Download Product catalog</Button>
