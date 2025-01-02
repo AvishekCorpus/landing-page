@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isAnimating, setAnimating] = useState(false); // For smooth closing animation
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>();
+  const navigate = useNavigate();
 
-  const menus: string[] = [
-    "About Us",
-    "Division",
-    "Events",
-    "Life at Corpus",
-    "Contact",
+  const menus: { name: string; route: string }[] = [
+    { name: "About Us", route: "/about-us" },
+    { name: "Division", route: "/division" },
+    { name: "Events", route: "/events" },
+    { name: "Life at Corpus", route: "/life-at-corpus" },
+    { name: "Contact", route: "/contact" },
   ];
 
   const toggleMenu = () => {
@@ -26,9 +28,10 @@ const Navigation: React.FC = () => {
     }
   };
 
-  const handleMenuClick = (menuItem: string) => {
-    setSelectedMenuItem(menuItem);
+  const handleMenuClick = (menuItem: { name: string; route: string }) => {
+    setSelectedMenuItem(menuItem.name);
     toggleMenu(); // Close the menu after selection
+    navigate(menuItem.route); // Navigate to the route 
   };
 
   return (
@@ -38,11 +41,11 @@ const Navigation: React.FC = () => {
         <ul className="nav-links">
           {menus.map((item) => (
             <li
-              key={item}
+              key={item.name}
               onClick={() => handleMenuClick(item)}
-              className={selectedMenuItem === item ? "selected" : ""}
+              className={selectedMenuItem === item.name ? "selected" : ""}
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>
@@ -58,17 +61,22 @@ const Navigation: React.FC = () => {
             <ul>
               {menus.map((item) => (
                 <li
-                  key={item}
+                  key={item.name}
                   onClick={() => handleMenuClick(item)}
-                  className={selectedMenuItem === item ? "selected" : ""}
+                  className={selectedMenuItem === item.name ? "selected" : ""}
                 >
-                  {item}
+                  {item.name}
                 </li>
               ))}
             </ul>
             <div className="contact-info">
               <p>info@corpuslifescience.com</p>
-              <p>+91 8420112846 | +91 8902036365 <br /> <span style={{marginTop:"0.5rem"}}>+91 33 2694 4604 / 4605</span></p>
+              <p>
+                +91 8420112846 | +91 8902036365 <br />{" "}
+                <span style={{ marginTop: "0.5rem" }}>
+                  +91 33 2694 4604 / 4605
+                </span>
+              </p>
             </div>
           </div>
         )}

@@ -66,7 +66,7 @@
   border-radius: 50%;
   display: flex !important;
   opacity: 1 !important;
-  transform: scale(1.5) !important;
+  transform: scale(1.2) !important;
   text-align: center;
   padding: 10.5px !important;
   border: 3px solid var(--orange) !important;

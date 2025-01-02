@@ -1,0 +1,53 @@
+.about-us-section {
+  padding: 20px;
+  background-color: var(--brand-color-green-shade2);
+}
+
+.card-image {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+.card-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #d9d9d9;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 20px;
+  margin: 10px 0;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px;
+}
+
+.skeleton-description {
+  width: 90%;
+  height: 100px;
+}
+
+.skeleton-card {
+  width: 48%;
+  height: 250px;
+  background-color: #dcdcdc;
+  border-radius: 4px;
+}
