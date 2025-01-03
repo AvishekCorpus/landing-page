@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Skeleton } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import './style.css';
@@ -11,12 +12,17 @@ interface AboutUsLeadershipProps {
 
 const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description, leaders }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (description && leaders.length) {
       setIsLoading(false);
     }
   }, [description, leaders]);
+
+  const handleCardClick = (leader: Leader) => {
+    navigate('/about-us/leaders', { state: { leaders } });
+  };
 
   return (
     <div className="aboutusleadership-container">
@@ -47,6 +53,7 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description, lead
                   <Card
                     hoverable
                     cover={<img className="aboutusleadership-leader-image" alt={leader.name} src={leader.image.asset.url} />}
+                    onClick={() => handleCardClick(leader)}
                   >
                     <Meta
                       title={leader.name || 'No Name'}

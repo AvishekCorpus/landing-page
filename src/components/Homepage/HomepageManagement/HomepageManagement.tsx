@@ -4,12 +4,23 @@ import { Management } from "../../../pages/Homepage";
 import { Skeleton } from "antd"; // Importing Ant Design Skeleton
 
 interface Props {
-  managementData: Management[] // Allowing null to handle empty state
+  managementData: Management[], // Allowing null to handle empty state
+  management ?: boolean
 }
 
-const HomepageManagement: React.FC<Props> = ({ managementData }) => {
+const HomepageManagement: React.FC<Props> = ({ managementData , management }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationDirection, setAnimationDirection] = useState("");
+  const keyManagementTitle = (
+    <>
+      <span>Key</span> Management
+    </>
+  );
+  const outLeadershipTitle = (
+    <>
+      <span>Our</span> Leadership
+    </>
+  );
 
   const handleNext = () => {
     setAnimationDirection("fade-in");
@@ -26,7 +37,7 @@ const HomepageManagement: React.FC<Props> = ({ managementData }) => {
     return (
       <div className="management-carousel-container">
         <h2 className="management-carousel-title">
-          <span>Key</span> Management
+          {management ? keyManagementTitle : outLeadershipTitle}
         </h2>
         <div className="management-carousel-card">
           <div className="management-carousel-actions">
@@ -50,7 +61,7 @@ const HomepageManagement: React.FC<Props> = ({ managementData }) => {
   return (
     <div className="management-carousel-container">
       <h2 className="management-carousel-title">
-        <span>Key</span> Management
+        {management ? keyManagementTitle : outLeadershipTitle}
       </h2>
       <div
         className={`management-carousel-card ${animationDirection}`}

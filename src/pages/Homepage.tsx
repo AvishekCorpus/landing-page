@@ -153,7 +153,7 @@ const Homepage: React.FC<Props> = () => {
       <HomepageDivision divisions={divisions} />
       <TaglineSection videoState={videoState} />
       <HomepageProducts cardData={cardData} />
-      <HomepageManagement managementData={managementData} />
+      <HomepageManagement management managementData={managementData} />
     </div>
   );
 };

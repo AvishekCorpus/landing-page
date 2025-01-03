@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
 import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
+import AboutUsLeaderPage from "./pages/AboutUsLeaderPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
@@ -25,6 +26,16 @@ export const router = createBrowserRouter([
       <Suspense fallback={<FullScreenLoader />}>
         <Layout displayIsoCertification>
           <AboutUsPage />
+        </Layout>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/about-us/leaders",
+    element: (
+      <Suspense fallback={<FullScreenLoader />}>
+        <Layout displayIsoCertification>
+          <AboutUsLeaderPage />
         </Layout>
       </Suspense>
     ),
