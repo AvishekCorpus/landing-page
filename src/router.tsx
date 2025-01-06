@@ -1,13 +1,13 @@
-import { createBrowserRouter, Link } from "react-router-dom";
 import React, { Suspense } from "react";
+import { createBrowserRouter } from "react-router-dom";
+import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
 import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
-import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
-import AboutUsLeaderPage from "./pages/AboutUsLeaderPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
-const AboutUsPage = React.lazy(() => import("./pages/AboutUsPage"));
+const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUsPage"));
+const AboutUsLeaderPage = React.lazy(() => import("./pages/AboutUs/AboutUsLeaderPage"));
 
 export const router = createBrowserRouter([
   {

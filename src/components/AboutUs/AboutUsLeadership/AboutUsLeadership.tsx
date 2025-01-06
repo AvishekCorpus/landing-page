@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Card, Skeleton } from 'antd';
 import Meta from 'antd/es/card/Meta';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Leader } from '../../../pages/AboutUs/AboutUsPage';
 import './style.css';
-import { Leader } from '../../../pages/AboutUsPage';
 
 interface AboutUsLeadershipProps {
   description: string;

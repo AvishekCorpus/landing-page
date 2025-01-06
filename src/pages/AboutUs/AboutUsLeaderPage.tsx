@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import HomepageManagement from '../../components/Homepage/HomepageManagement/HomepageManagement';
+import { Management } from '../Homepage';
 import { Leader } from './AboutUsPage';
-import { Management } from './Homepage';
-import HomepageManagement from '../components/Homepage/HomepageManagement/HomepageManagement';
 
 const AboutUsLeaderPage: React.FC = () => {
   const location = useLocation();

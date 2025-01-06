@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import AboutUsImage from '../components/AboutUs/AboutUsImage/AboutUsImage';
-import './styles/aboutus.css';
-import AboutUsVisionMission from '../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission';
-import AboutUsLeadership from '../components/AboutUs/AboutUsLeadership/AboutUsLeadership';
+import AboutUsImage from '../../components/AboutUs/AboutUsImage/AboutUsImage';
+import AboutUsLeadership from '../../components/AboutUs/AboutUsLeadership/AboutUsLeadership';
+import AboutUsVisionMission from '../../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission';
+import '../styles/aboutus.css';
 
 // Define interface for AboutUs data
 export interface AboutUsData {
