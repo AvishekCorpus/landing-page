@@ -147,7 +147,7 @@
   right: 250px;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .management-carousel-description {
     width: 80%;
   }
@@ -155,7 +155,7 @@
     top: 100px;
   }
   .mgmt-4 {
-    bottom: -50px;
+    bottom: -30px;
   }
 }
 @media (max-width: 900px) {

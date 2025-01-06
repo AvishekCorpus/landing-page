@@ -65,11 +65,11 @@ const HomepageDivision: React.FC<Props> = ({ divisions }) => {
       <div className="division-container">
         <div className="division-heading">Divisions</div>
         <div className="divisions">
-          <Row gutter={[16, 16]} justify="center">
+          <Row gutter={[16, 16]}>
             {[...Array(chunkSize)].map((_, index) => (
               <Col key={index} xs={24} sm={12} md={8} lg={6}>
                 <Card
-                  style={{ width: 220, margin: "2rem auto" }}
+                  style={{ width: 220 }}
                   cover={<Skeleton.Image active style={{ height: 150, width:"100%" }} />}
                   loading
                   actions={[<Skeleton.Button active />]}

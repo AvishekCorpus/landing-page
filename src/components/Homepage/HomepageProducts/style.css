@@ -105,9 +105,9 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .carousel-container {
-    width: 90%;
+    width: 100%;
   }
   .card-title,
   .card-division {

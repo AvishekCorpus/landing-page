@@ -55,12 +55,13 @@ const Navigation: React.FC = () => {
       navigate(submenuItem.route);
       if (isMenuOpen) toggleMenu();
     }
+    setActiveDropdown(null);
   };
 
   return (
     <nav className="navigation">
       <div className="desktop-navbar">
-        <div className="logo">Company Logo</div>
+        <div className="logo" onClick={() =>{navigate("/");setActiveDropdown(null)}}>Company Logo</div>
         <ul className="nav-links">
           {menuItems.map((item) => (
             <li

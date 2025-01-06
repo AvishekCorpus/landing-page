@@ -81,10 +81,21 @@ video {
   border: 0px;
 }
 
-@media (min-width: 1100px) {
+@media (max-width: 1100px) {
   .tagline-container {
     width: 74vw;
+    height: auto;
     margin: 0 auto;
+  }
+}
+@media (min-width: 1020px) {
+  .tagline-container {
+    width: 74vw;
+    height: auto;
+    margin: 0 auto;
+  }
+  .tagline-data {
+    height: 65vh;
   }
 }
 

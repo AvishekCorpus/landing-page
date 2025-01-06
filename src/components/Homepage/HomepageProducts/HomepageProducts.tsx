@@ -34,7 +34,7 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
     } else if (width <= 1024) {
       setSlidesToShow(3);
     } else {
-      setSlidesToShow(5);
+      setSlidesToShow(4);
     }
   };
 
