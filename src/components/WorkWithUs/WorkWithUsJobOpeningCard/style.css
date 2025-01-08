@@ -1,0 +1,99 @@
+.work-with-us-jobs {
+  padding: 2rem;
+  padding-top: 0;
+}
+
+.custom-collapse {
+  background-color: white; /* Background color for collapse */
+  color: #000;
+}
+
+.custom-panel {
+  border: none; /* No border for individual panels */
+  background-color: transparent; /* Light background for the panels */
+  margin: 0; /* Remove margin */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  border: 3px solid var(--gray-shade1) !important;
+  margin-top: 0.7rem;
+}
+
+.custom-panel:hover {
+  background-color: var(
+    --brand-color-green-shade2
+  ); /* Hover effect for panels */
+}
+
+.ant-collapse-header {
+  font-weight: bold; /* Bold text for headers */
+  color: black; /* Header text color */
+}
+
+.custom-arrow {
+  display: inline-block;
+  margin-left: 8px; /* Space between header text and arrow */
+  font-size: 16px; /* Size of the arrow */
+  color: var(--gray-shade2) !important; /* Arrow color */
+}
+
+/* Active panel styles */
+.custom-panel.ant-collapse-item-active {
+  background-color: var(--orange); /* Orange background for the active panel */
+}
+
+.custom-panel.ant-collapse-item-active .ant-collapse-header {
+  color: white; /* White text for active header */
+}
+
+.ant-collapse-content-active {
+  .ant-collapse-content-box {
+    background-color: var(--brand-color-green-shade2);
+    padding-top: 1rem !important;
+  }
+}
+.work-with-us-job-descrition {
+  background-color: var(--gray-shade2);
+  padding: 1rem;
+  font-weight: 500;
+}
+.job-desc-heading {
+  color: var(--orange);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.postedDate {
+  font-size: 0.7rem;
+  color: gray;
+  margin-bottom: 0.5rem;
+}
+.desired-skills-list {
+  margin-left: 1rem;
+}
+.cv-uploaded {
+  margin-top: 1rem;
+}
+.cv-uploaded-card {
+  background-color: var(--brand-color-green-shade1);
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  div:first-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  div:nth-child(2) {
+    display: flex;
+    gap: 5px;
+  }
+  .ant-card-body {
+    padding: 15px !important;
+  }
+}
+.submit-cv-button {
+  background-color: var(--orange);
+  margin-top: 1rem;
+}
+.submit-cv-button:hover {
+  background-color: var(--sunset-orange);
+}

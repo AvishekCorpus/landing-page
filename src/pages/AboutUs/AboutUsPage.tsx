@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import AboutUsImage from '../../components/AboutUs/AboutUsImage/AboutUsImage';
 import AboutUsLeadership from '../../components/AboutUs/AboutUsLeadership/AboutUsLeadership';
 import AboutUsVisionMission from '../../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission';
+import PageHeadingCard from '../../components/shared/PageHeadingCard/PageHeadingCard';
 import '../styles/aboutus.css';
 
 // Define interface for AboutUs data
@@ -133,7 +133,7 @@ const AboutUsPage: React.FC = () => {
     <div className="aboutuspage-container">
       {aboutUsData ? (
         <>
-          <AboutUsImage image={aboutUsData.image} />
+          <PageHeadingCard image={aboutUsData.image} title='About us' />
           <div className='about-us-page-description'>{aboutUsData.description}</div>
           <AboutUsVisionMission vision={aboutUsData.vision} mission={aboutUsData.mission} />
           <AboutUsLeadership 

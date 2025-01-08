@@ -42,7 +42,7 @@ export const menuItems: MenuItem[] = [
     route: "/life-at-corpus",
     submenu: [
       { name: "Team Corpus", route: "/life-at-corpus/team" },
-      { name: "Work with us", route: "/life-at-corpus/careers" },
+      { name: "Work with us", route: "/life-at-corpus/work-with-us" },
       { name: "Training & Development", route: "/life-at-corpus/training" },
     ],
   },

@@ -8,6 +8,7 @@ import Layout from "./layout";
 const Homepage = React.lazy(() => import("./pages/Homepage"));
 const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUsPage"));
 const AboutUsLeaderPage = React.lazy(() => import("./pages/AboutUs/AboutUsLeaderPage"));
+const WorkWithUs = React.lazy(() => import("./pages/LifeAtCorpus/WorkWithUs"));
 
 export const router = createBrowserRouter([
   {
@@ -22,23 +23,43 @@ export const router = createBrowserRouter([
   },
   {
     path: "/about-us",
-    element: (
-      <Suspense fallback={<FullScreenLoader />}>
-        <Layout displayIsoCertification>
-          <AboutUsPage />
-        </Layout>
-      </Suspense>
-    ),
+    children: [
+      {
+        path:"",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <AboutUsPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: "leaders",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <AboutUsLeaderPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+    ]
   },
   {
-    path: "/about-us/leaders",
-    element: (
-      <Suspense fallback={<FullScreenLoader />}>
-        <Layout displayIsoCertification>
-          <AboutUsLeaderPage />
-        </Layout>
-      </Suspense>
-    ),
+    path: "/life-at-corpus",
+    children : [
+      {
+        path: "work-with-us",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <WorkWithUs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+    ]
   },
   {
     path: "*",
