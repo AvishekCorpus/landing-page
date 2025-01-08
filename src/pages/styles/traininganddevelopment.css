@@ -1,0 +1,38 @@
+.training-card {
+    padding:2rem;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background-color: var(--brand-color-green-shade2);
+}
+.training-image {
+    flex: 1;
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+.training-description{
+    flex : 2
+}
+.inverted {
+    flex-direction: row-reverse;
+    background-color: white;
+}
+.training-title {
+    color: var(--orange);
+    font-weight: 600;
+}
+.training-title-inverted {
+    color: var(--brand-color-green-shade1);
+    font-weight: 600;
+}
+
+@media (max-width : 900px) {
+    .training-card {
+        flex-direction: column;
+    }
+}

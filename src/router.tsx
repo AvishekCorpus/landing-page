@@ -9,6 +9,7 @@ const Homepage = React.lazy(() => import("./pages/Homepage"));
 const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUsPage"));
 const AboutUsLeaderPage = React.lazy(() => import("./pages/AboutUs/AboutUsLeaderPage"));
 const WorkWithUs = React.lazy(() => import("./pages/LifeAtCorpus/WorkWithUs"));
+const TrainingAndDevelopment = React.lazy(() => import("./pages/LifeAtCorpus/TrainingAndDevelopment"));
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,16 @@ export const router = createBrowserRouter([
           <Suspense fallback={<FullScreenLoader />}>
             <Layout displayIsoCertification>
               <WorkWithUs />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: "training",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <TrainingAndDevelopment />
             </Layout>
           </Suspense>
         ),
