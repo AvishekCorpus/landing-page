@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { menuItems } from "./data/menuItems";
 import "./Navigation.css";
 import { MenuItem } from "./types/navigation";
-import { menuItems } from "./data/menuItems";
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -77,7 +77,7 @@ const Navigation: React.FC = () => {
                   {item.submenu.map((subItem) => (
                     <div
                       key={subItem.name}
-                      className={`dropdown-item ${selectedMenuItem === subItem.name ? "selected" : ""}`}
+                      className={`dropdown-item ${selectedMenuItem === subItem.name ? "selected subItem" : ""}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleSubmenuClick(item, subItem);
@@ -90,7 +90,7 @@ const Navigation: React.FC = () => {
                             <div
                               key={nestedItem.name}
                               className={`dropdown-item nested-item ${
-                                selectedMenuItem === nestedItem.name ? "selected" : ""
+                                selectedMenuItem === nestedItem.name ? "selected sub-sub-item" : ""
                               }`}
                               onClick={(e) => {
                                 e.stopPropagation();

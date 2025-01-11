@@ -10,6 +10,8 @@ const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUsPage"));
 const AboutUsLeaderPage = React.lazy(() => import("./pages/AboutUs/AboutUsLeaderPage"));
 const WorkWithUs = React.lazy(() => import("./pages/LifeAtCorpus/WorkWithUs"));
 const TrainingAndDevelopment = React.lazy(() => import("./pages/LifeAtCorpus/TrainingAndDevelopment"));
+const LifeAtCorpus = React.lazy(() => import("./pages/LifeAtCorpus/index"));
+const LifeAtCorpusTeam = React.lazy(() => import("./pages/LifeAtCorpus/LifeAtCorpusTeam"));
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +52,26 @@ export const router = createBrowserRouter([
   {
     path: "/life-at-corpus",
     children : [
+      {
+        path: "index",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <LifeAtCorpus />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: "team",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <LifeAtCorpusTeam />
+            </Layout>
+          </Suspense>
+        ),
+      },
       {
         path: "work-with-us",
         element: (

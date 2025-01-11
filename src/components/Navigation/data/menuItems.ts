@@ -41,6 +41,7 @@ export const menuItems: MenuItem[] = [
     name: "Life at Corpus",
     route: "/life-at-corpus",
     submenu: [
+      { name: "Life at Corpus", route: "/life-at-corpus/index"},
       { name: "Team Corpus", route: "/life-at-corpus/team" },
       { name: "Work with us", route: "/life-at-corpus/work-with-us" },
       { name: "Training & Development", route: "/life-at-corpus/training" },

@@ -16,7 +16,10 @@
     }
 }
 .training-description{
-    flex : 2
+    flex : 2;
+    p {
+        line-height:30px
+    }
 }
 .inverted {
     flex-direction: row-reverse;

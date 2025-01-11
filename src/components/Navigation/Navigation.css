@@ -223,7 +223,13 @@
 /* Selected states */
 .selected {
   font-weight: 600;
-  color: white;
+  color: var(--orange);
+}
+.subItem {
+  font-weight: 600;
+  color: var(--sunset-orange) !important;
+  background-color: white;
+  border-radius: 0px !important;
 }
 
 /* Animations */
@@ -269,6 +275,12 @@
   
   .logo {
     font-size: 1.2rem;
+  }
+  .menu-toggle {
+    transform: translateY(-25px);
+  }
+  .mobile-menu {
+    top:100px
   }
 }
 

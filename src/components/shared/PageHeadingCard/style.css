@@ -1,3 +1,6 @@
+.page-header-card {
+  background-color: white !important;
+}
 .aboutus-image-container {
     height: 90vh;
     img {
@@ -9,6 +12,10 @@
   .aboutus-image-description {
     width: 40%;
     box-shadow: 0px 0px 34px 1px var(--orange);
+    background-color: white;
+    padding: 2rem;
+    line-height: 30px;
+    border-radius: 1rem;
     position: relative;
     top: 60%;
     left: 100px;
@@ -34,17 +41,18 @@
     }
   }
   
-  @media (max-width: 900px) {
+  @media (min-width: 900px) {
     .aboutus-image-description {
       width: 90%;
       transform: scale(0.9) translateY(-150px);
-      left: 20px;
+      left: -20px;
     }
   }
   @media (max-width: 600px) {
     .aboutus-image-description {
-      width: 95%;
-      left: 5px;
+      width: 120%;
+      left: -40px;
+      transform: scale(0.8)  translateY(-400px);
     }
     .aboutus-image-container {
       height: 110vh;

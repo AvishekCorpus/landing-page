@@ -1,4 +1,4 @@
-import { Card, Skeleton } from "antd";
+import { Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
@@ -34,12 +34,12 @@ const PageHeadingCard : React.FC<AboutUsImageProps> = ({image, title}) => {
           <>
             <div>
               <img src={image.src} alt="About Us" />
-              <Card
+              <div
                 className="aboutus-image-description"
-                title={<h1>{title}</h1>}
               >
+                <div style={{fontSize:'2rem', color:"var(--brand-color-green)", fontWeight : 700, marginBottom : "1rem"}}>{title}</div>
                 {image.description}
-              </Card>
+              </div>
             </div>
           </>
         )}
