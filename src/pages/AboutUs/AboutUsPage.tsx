@@ -42,6 +42,7 @@ export interface Leader {
   name: string;
   designation: string;
   tagline: string;
+  guid : string;
 }
 
 const AboutUsPage: React.FC = () => {
@@ -138,7 +139,6 @@ const AboutUsPage: React.FC = () => {
           <AboutUsVisionMission vision={aboutUsData.vision} mission={aboutUsData.mission} />
           <AboutUsLeadership 
             description={aboutUsData.leadership.description} 
-            leaders={aboutUsData.leadership.leaders} 
           />
         </>
       ) : (

@@ -7,21 +7,43 @@ import './style.css';
 
 interface AboutUsLeadershipProps {
   description: string;
-  leaders: Leader[];
 }
 
-const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description, leaders }) => {
+const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [leaders,setLeaders] = useState<any[]>([]);
   const navigate = useNavigate();
 
+  const getData = async () => {
+    const query = encodeURIComponent(`*[_type == "leader"] {
+      _id,
+      name,
+      image {
+        asset -> {
+          url
+        }
+      },
+      designation,
+      guid
+    }`);
+    const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
+    const res = await fetch(url).then((res) => res.json());
+
+    if (res?.result) {
+      console.log(res?.result)
+      setLeaders(res?.result);
+    }
+  };
+
   useEffect(() => {
-    if (description && leaders.length) {
+    if (description) {
       setIsLoading(false);
     }
-  }, [description, leaders]);
+    getData();
+  }, [description]);
 
   const handleCardClick = (leader: Leader) => {
-    navigate('/about-us/leaders', { state: { leaders } });
+    navigate(`/about-us/leaders/${leader.guid}`);  
   };
 
   return (

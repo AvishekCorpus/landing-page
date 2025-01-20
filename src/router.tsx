@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "leaders",
+        path: "leaders/:id",
         element: (
           <Suspense fallback={<FullScreenLoader />}>
             <Layout displayIsoCertification>

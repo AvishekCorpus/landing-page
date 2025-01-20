@@ -1,32 +1,80 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import HomepageManagement from '../../components/Homepage/HomepageManagement/HomepageManagement';
-import { Management } from '../Homepage';
-import { Leader } from './AboutUsPage';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../styles/aboutusleader.css";
 
 const AboutUsLeaderPage: React.FC = () => {
-  const location = useLocation();
-  const leaders: Leader[] = location.state?.leaders || [];
+  const { id } = useParams<{ id: string }>(); // Extract the 'id' parameter
+  const [leader, setLeader] = useState<any>();
 
-  // Mapper function to convert Leader to Management
-  const mapLeadersToManagement = (leaders: Leader[]): Management[] => {
-    return leaders.map((leader) => ({
-      name: leader.name,
-      position: leader.designation,
-      image: leader.image.asset.url,
-      description: leader.image.imageDescription || leader.tagline,
-    }));
+  const getData = async () => {
+    const query =
+      encodeURIComponent(`*[_type == "leader" && guid == '${id}'][0] {
+        name,
+        image {
+          asset -> {
+            url
+          }
+        },
+        designation,
+        description,
+        education,
+        age,
+        nationality,
+        appointed,
+        tenure,
+        committeeMembership
+      }`);
+    const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
+    const res = await fetch(url).then((res) => res.json());
+    setLeader(res?.result);
   };
 
-  const managementList = mapLeadersToManagement(leaders);
-
-  if (!leaders.length) {  
-    return <div>No leader data available</div>;
-  }
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
-    <div>
-      <HomepageManagement management={false}  managementData={managementList} />
+    <div className="aboutusleaderpage-container">
+      <div className="aboutusleaderpage-image">
+        <img src={leader?.image?.asset?.url} alt={leader?.name} />
+      </div>
+      <div className="aboutusleaderpage-data">
+        <h1>{leader?.name}</h1>
+        <h4 style={{ color: "var(--orange)" }}>{leader?.designation}</h4>
+        <h4 style={{ marginTop: "1rem", color: "gray", lineHeight: "30px" }}>
+          {leader?.description}
+        </h4>
+        <table className="aboutusleaderpage-table">
+          <tbody>
+            <tr>
+              <td>Education</td>
+              <td>{leader?.education}</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>{leader?.age}</td>
+            </tr>
+            <tr>
+              <td>Nationality</td>
+              <td>{leader?.nationality}</td>
+            </tr>
+            <tr>
+              <td>Appointed</td>
+              <td>{leader?.appointed}</td>
+            </tr>
+            <tr>
+              <td>Tenure</td>
+              <td>{leader?.tenure}</td>
+            </tr>
+            <tr>
+              <td>Committee Membership</td>
+              <td>{leader?.committeeMembership?.map((cm : any,i : any) => {
+                return <span key={i}>{cm}{i !== leader?.committeeMembership?.length - 1 ? ',' : ''}</span>
+              })}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
