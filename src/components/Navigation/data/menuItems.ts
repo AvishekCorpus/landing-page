@@ -16,11 +16,6 @@ export const menuItems: MenuItem[] = [
       {
         name: "Antibiotics",
         route: "/division/antibiotics",
-        submenu: [
-          { name: "Oral", route: "/division/antibiotics/oral" },
-          { name: "Injectable", route: "/division/antibiotics/injectable" },
-          { name: "Topical", route: "/division/antibiotics/topical" },
-        ],
       },
       {
         name: "Anti Antibiotic / Anti Allergic",

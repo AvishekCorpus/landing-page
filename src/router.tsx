@@ -12,6 +12,7 @@ const WorkWithUs = React.lazy(() => import("./pages/LifeAtCorpus/WorkWithUs"));
 const TrainingAndDevelopment = React.lazy(() => import("./pages/LifeAtCorpus/TrainingAndDevelopment"));
 const LifeAtCorpus = React.lazy(() => import("./pages/LifeAtCorpus/index"));
 const LifeAtCorpusTeam = React.lazy(() => import("./pages/LifeAtCorpus/LifeAtCorpusTeam"));
+const EventPage = React.lazy(() => import("./pages/EventPage"));
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,16 @@ export const router = createBrowserRouter([
         ),
       },
     ]
+  },
+  {
+    path : "events",
+    element: (
+      <Suspense fallback={<FullScreenLoader />}>
+        <Layout displayIsoCertification>
+          <EventPage />
+        </Layout>
+      </Suspense>
+    ),
   },
   {
     path: "*",

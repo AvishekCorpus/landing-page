@@ -28,7 +28,6 @@ export interface AboutUsData {
   };
   leadership: {
     description: string;
-    leaders: Leader[];
   };
 }
 
@@ -122,7 +121,6 @@ const AboutUsPage: React.FC = () => {
     },
     leadership: {
       description: data?.leadership?.description || 'No leadership description available',
-      leaders: data?.leadership?.leaders || [],
     },
   });
 
