@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
 import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
+import DivisionPage from "./pages/DivisionPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
@@ -113,4 +114,14 @@ export const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+  {
+    path:"division/:name",
+    element: (
+      <Suspense fallback={<FullScreenLoader />}>
+        <Layout displayIsoCertification>
+          <DivisionPage />
+        </Layout>
+      </Suspense>
+    ),
+  }
 ]);

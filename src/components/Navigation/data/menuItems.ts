@@ -15,14 +15,14 @@ export const menuItems: MenuItem[] = [
     submenu: [
       {
         name: "Antibiotics",
-        route: "/division/antibiotics",
+        route: "/division/Antibiotics",
       },
       {
         name: "Anti Antibiotic / Anti Allergic",
-        route: "/division/anti-allergic",
+        route: "/division/Anti-allergic",
       },
-      { name: "Anti Cold", route: "/division/anti-cold" },
-      { name: "Antacid + PPI", route: "/division/antacid-ppi" },
+      { name: "Anti Cold", route: "/division/Anti-cold" },
+      { name: "Antacid + PPI", route: "/division/Antacid-ppi" },
       { name: "Appetizer", route: "/division/appetizer" },
       { name: "Enzymes & Pre-Probiotics", route: "/division/enzymes" },
       { name: "Anti Inflammatory", route: "/division/anti-inflammatory" },
