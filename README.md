@@ -8,3 +8,4 @@ Life at corpus
 sitemap
 events page
 division page
+bug -fix & improvisation
