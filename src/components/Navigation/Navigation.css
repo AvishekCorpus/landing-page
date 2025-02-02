@@ -66,6 +66,8 @@
   transition: all 0.3s ease;
   z-index: 100;
   color: white;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 .dropdown-menu:hover {
   color: white;
@@ -254,6 +256,7 @@
     opacity: 0;
   }
 }
+
 
 /* Responsive styles */
 @media (max-width: 768px) {

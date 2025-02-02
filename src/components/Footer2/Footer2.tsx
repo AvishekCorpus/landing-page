@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
-import "./style.css";
 import { Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const Footer2: React.FC = () => {
+  const navigate = useNavigate();
   const [socialLinks, setSocialLinks] = useState({
     facebook: "",
     instagram: "",
@@ -32,34 +34,42 @@ const Footer2: React.FC = () => {
     window.open(url, "_blank");
   };
 
+  const handleButtonClick = (url : string) => {
+    navigate(url);
+  }
+
   return (
     <div className="footer2-container">
       <div className="footer2-wrapper1">
         <div>
-          <Button size={"small"} style={{ fontWeight: "500" }}>
+          <Button size={"small"} style={{ fontWeight: "500" }} onClick={()=>{handleButtonClick('/')}}>
             Home
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
+            onClick={()=>{handleButtonClick('/about-us')}}
           >
             About us
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
+            onClick={()=>{handleButtonClick('/events')}}
           >
-            Formulations
+            Events
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
+            onClick={()=>{handleButtonClick('/life-at-corpus/index')}}
           >
-            Career
+            Life at corpus
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
+            onClick={()=>{handleButtonClick('/contact')}}
           >
             Contact
           </Button>

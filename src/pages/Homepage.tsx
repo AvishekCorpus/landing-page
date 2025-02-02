@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import HomepageDivision from "../components/Homepage/HomepageDivision/HomepageDivision";
-import TaglineSection from "../components/Homepage/TaglineSection/TaglineSection";
-import HomepageManagement from "../components/Homepage/HomepageManagement/HomepageManagement";
 import HomepageImages from "../components/Homepage/HomepageImages/HomepageImages";
+import HomepageManagement from "../components/Homepage/HomepageManagement/HomepageManagement";
 import HomepageProducts from "../components/Homepage/HomepageProducts/HomepageProducts";
+import TaglineSection from "../components/Homepage/TaglineSection/TaglineSection";
 
 interface Props {}
 
@@ -150,7 +150,7 @@ const Homepage: React.FC<Props> = () => {
   return (
     <div>
       <HomepageImages images={images} />
-      <HomepageDivision divisions={divisions} />
+      <HomepageDivision cardData={divisions} />
       <TaglineSection videoState={videoState} />
       <HomepageProducts cardData={cardData} />
       <HomepageManagement management managementData={managementData} />

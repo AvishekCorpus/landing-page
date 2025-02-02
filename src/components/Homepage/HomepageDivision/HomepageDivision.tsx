@@ -1,75 +1,89 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Carousel, Row, Col, Button, Skeleton, Card } from "antd";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import "./style.css";
-import DivisionCard from "./DivisionCard";
-import { Division } from "../../../pages/Homepage";
+import { Card, Carousel, Col, Skeleton } from "antd";
+import React, { useEffect, useState } from "react";
+import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
+import "../HomepageProducts/style.css";
 
 interface Props {
-  divisions?: Division[] | null;
+  cardData: any;
 }
 
-const HomepageDivision: React.FC<Props> = ({ divisions }) => {
-  const carouselRef = useRef<any>(null);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [chunkSize, setChunkSize] = useState(4); // Default chunk size for laptops
+const HomepageProducts: React.FC<Props> = ({ cardData }) => {
+  const [slidesToShow, setSlidesToShow] = useState(5);
+  const [cardWidth, setCardWidth] = useState(300);
 
-  // Update chunk size based on screen width
+  const CustomPrevArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
+    <div className="custom-arrow custom-prev" onClick={onClick}>
+      <GoTriangleLeft />
+    </div>
+  );
+
+  const CustomNextArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
+    <div className="custom-arrow custom-next" onClick={onClick}>
+      <GoTriangleRight />
+    </div>
+  );
+
+  const updateSlidesToShow = () => {
+    const width = window.innerWidth;
+    if (width <= 480) {
+      setSlidesToShow(1);
+    } else if (width <= 768) {
+      setSlidesToShow(2);
+    } else if (width <= 1024) {
+      setSlidesToShow(3);
+    } else {
+      setSlidesToShow(4);
+    }
+  };
+
+  const updateCardWidth = () => {
+    const width = window.innerWidth;
+    if (width >= 1200) {
+      setCardWidth(240);
+    } else if (width >= 768) {
+      setCardWidth(240);
+    } else {
+      setCardWidth(240);
+    }
+  };
+
   useEffect(() => {
-    const updateChunkSize = () => {
-      const width = window.innerWidth;
-      if (width >= 1000) {
-        setChunkSize(4); // Laptop
-      } else if (width >= 768) {
-        setChunkSize(3); // Tablet
-      } else {
-        setChunkSize(1); // Mobile
-      }
-    };
+    updateSlidesToShow();
+    updateCardWidth();
+    window.addEventListener("resize", updateSlidesToShow);
+    window.addEventListener("resize", updateCardWidth);
 
-    updateChunkSize();
-    window.addEventListener("resize", updateChunkSize);
-
+    console.log("Divisions",cardData);
     return () => {
-      window.removeEventListener("resize", updateChunkSize);
+      window.removeEventListener("resize", updateSlidesToShow);
+      window.removeEventListener("resize", updateCardWidth);
     };
   }, []);
 
-  // Divide divisions into chunks based on screen size
-  const chunkArray = (arr: Division[] = [], chunkSize: number): Division[][] => {
-    return arr.reduce((acc, _, index) => {
-      if (index % chunkSize === 0)
-        acc.push(arr.slice(index, index + chunkSize));
-      return acc;
-    }, [] as Division[][]);
-  };
-
-  const chunks = chunkArray(divisions || [], chunkSize);
-
-  const handleNext = () => {
-    if (currentPage < chunks.length - 1) {
-      setCurrentPage((prev) => prev + 1);
-      carouselRef.current?.next();
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 0) {
-      setCurrentPage((prev) => prev - 1);
-      carouselRef.current?.prev();
-    }
-  };
-
-  if (!divisions || divisions.length === 0) {
+  if ( !cardData || cardData.length === 0) {
     return (
-      <div className="division-container">
-        <div className="division-heading">Divisions</div>
-        <div className="divisions">
-          <Row gutter={[16, 16]}>
-            {[...Array(chunkSize)].map((_, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={6}>
+      <div className="featured-product-container">
+        <div className="featured-title">
+          Featured <span>Product</span>
+        </div>
+        <Carousel
+          className="carousel-container"
+          arrows
+          infinite
+          prevArrow={<CustomPrevArrow />}
+          nextArrow={<CustomNextArrow />}
+          dots={false}
+          autoplay
+          autoplaySpeed={3000}
+          slidesToShow={slidesToShow}
+          slidesToScroll={1}
+        >
+          {/* Skeleton loaders mimicking cards */}
+          {[...Array(slidesToShow)].map((_, index) => (
+            <div key={index} className="featured-card">
+               <Col key={index} xs={24} sm={12} md={8} lg={6}>
                 <Card
-                  style={{ width: 220 }}
+                  style={{ width: 220, margin: "2rem auto" }}
                   cover={<Skeleton.Image active style={{ height: 150, width:"100%" }} />}
                   loading
                   actions={[<Skeleton.Button active />]}
@@ -77,64 +91,55 @@ const HomepageDivision: React.FC<Props> = ({ divisions }) => {
                   <Skeleton active paragraph={{ rows: 1 }} />
                 </Card>
               </Col>
-            ))}
-          </Row>
-        </div>
+            </div>
+          ))}
+        </Carousel>
       </div>
     );
   }
 
   return (
-    <div className="division-container">
-      <div className="division-heading">Divisions</div>
-      <div className="divisions">
-        <Carousel
-          draggable
-          ref={carouselRef}
-          dots={false}
-          afterChange={(index) => setCurrentPage(index)}
-        >
-          {chunks.map((batch, index) => (
-            <div key={index}>
-              <Row gutter={[16, 16]} justify="center">
-                {batch?.map((division, index) => (
-                  <Col key={index} xs={24} sm={12} md={8} lg={6}>
-                    <DivisionCard
-                      imageUrl={division.imageUrl}
-                      title={division.title}
-                      description={division.description}
-                    />
-                  </Col>
-                ))}
-              </Row>
-            </div>
-          ))}
-        </Carousel>
+    <div className="featured-product-container">
+      <div className="featured-title">
+        Divi<span>sions</span>
       </div>
-      <div className="custom-pagination">
-        <Button
-          type="text"
-          icon={<LeftOutlined />}
-          onClick={handlePrev}
-          disabled={currentPage === 0}
-        />
-        <div className="pagination-dots">
-          {chunks.map((_, index) => (
-            <div
-              key={index}
-              className={`dot ${currentPage === index ? "active" : ""}`}
-            ></div>
-          ))}
-        </div>
-        <Button
-          type="text"
-          icon={<RightOutlined />}
-          onClick={handleNext}
-          disabled={currentPage === chunks.length - 1}
-        />
-      </div>
+      <Carousel
+        className="carousel-container"
+        arrows
+        infinite
+        prevArrow={<CustomPrevArrow />}
+        nextArrow={<CustomNextArrow />}
+        dots={false}
+        autoplay
+        autoplaySpeed={3000}
+        slidesToShow={slidesToShow}
+        slidesToScroll={1}
+      >
+        {cardData.map((card:any ,index : any) => (
+          <div key={index} className="featured-card">
+            <Card
+              title={
+                <div className="card-header">
+                  <span className="card-title">{card.title}</span>
+                  <a href="#" className="card-more">
+                    More
+                  </a>
+                </div>
+              }
+              hoverable
+              cover={<img alt="example" src={card.imageUrl} />}
+              style={{ width: cardWidth, margin: "0 auto" }}
+            >
+              <div className="product-division">
+                <div>Division</div>
+                <div>{card.description}</div>
+              </div>
+            </Card>
+          </div>
+        ))}
+      </Carousel>
     </div>
   );
 };
 
-export default HomepageDivision;
+export default HomepageProducts;

@@ -1,5 +1,4 @@
-import { DeleteOutlined, EyeOutlined, UploadOutlined } from "@ant-design/icons";
-import { Button, Card, Collapse, Tooltip, Upload, message } from "antd";
+import { Button, Collapse, message } from "antd";
 import React, { useState } from "react";
 import "./style.css";
 
@@ -120,7 +119,7 @@ const WorkWithUsJobOpeningsCard: React.FC<WorkWithUsJobOpeningsCardProps> = ({
 
             {/* CV Upload Section */}
             <div className="cv-upload-section">
-              <div className="job-desc-heading">Upload Your CV</div>
+              {/* <div className="job-desc-heading">Upload Your CV</div>
               <div style={{ marginTop: "0.5rem" }}>
                 <Upload
                   beforeUpload={(file) => handleCvUpload(file, index)}
@@ -134,9 +133,9 @@ const WorkWithUsJobOpeningsCard: React.FC<WorkWithUsJobOpeningsCardProps> = ({
                     Recommended size is 8mb
                   </div>
                 </Upload>
-              </div>
+              </div> */}
 
-              {cvFiles[index] && filePreviews[index] && (
+              {/* {cvFiles[index] && filePreviews[index] && (
                 <Card className="cv-uploaded-card">
                   <div>
                     <div>{cvFiles[index]?.name}</div>
@@ -161,18 +160,22 @@ const WorkWithUsJobOpeningsCard: React.FC<WorkWithUsJobOpeningsCardProps> = ({
                     </div>
                   </div>
                 </Card>
-              )}
+              )} */}
 
-              {cvFileSizeErrors[index] && (
+              {/* {cvFileSizeErrors[index] && (
                 <div className="cv-upload-error">
                   File size exceeds the 8MB limit.
                 </div>
-              )}
+              )} */}
 
               <div>
                 <Button
                   size="large"
-                  onClick={() => handleSubmitCv(index)}
+                  onClick={() => {
+                    const email = "info@corpuslifescience.com"; 
+                    const subject = `CV Submission for Job : ${job.title}`;
+                    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+                  }}
                   type="primary"
                   className="submit-cv-button"
                 >
