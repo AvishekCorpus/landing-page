@@ -9,3 +9,4 @@ sitemap
 events page
 division page
 bug -fix & improvisation
+contact us`
