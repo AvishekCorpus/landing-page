@@ -3,16 +3,23 @@ import { createBrowserRouter } from "react-router-dom";
 import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
 import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
+import Contact from "./pages/Contact";
 import DivisionPage from "./pages/DivisionPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
 const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUsPage"));
-const AboutUsLeaderPage = React.lazy(() => import("./pages/AboutUs/AboutUsLeaderPage"));
+const AboutUsLeaderPage = React.lazy(
+  () => import("./pages/AboutUs/AboutUsLeaderPage")
+);
 const WorkWithUs = React.lazy(() => import("./pages/LifeAtCorpus/WorkWithUs"));
-const TrainingAndDevelopment = React.lazy(() => import("./pages/LifeAtCorpus/TrainingAndDevelopment"));
+const TrainingAndDevelopment = React.lazy(
+  () => import("./pages/LifeAtCorpus/TrainingAndDevelopment")
+);
 const LifeAtCorpus = React.lazy(() => import("./pages/LifeAtCorpus/index"));
-const LifeAtCorpusTeam = React.lazy(() => import("./pages/LifeAtCorpus/LifeAtCorpusTeam"));
+const LifeAtCorpusTeam = React.lazy(
+  () => import("./pages/LifeAtCorpus/LifeAtCorpusTeam")
+);
 const EventPage = React.lazy(() => import("./pages/EventPage"));
 
 export const router = createBrowserRouter([
@@ -30,7 +37,7 @@ export const router = createBrowserRouter([
     path: "/about-us",
     children: [
       {
-        path:"",
+        path: "",
         element: (
           <Suspense fallback={<FullScreenLoader />}>
             <Layout displayIsoCertification>
@@ -49,11 +56,11 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
-    ]
+    ],
   },
   {
     path: "/life-at-corpus",
-    children : [
+    children: [
       {
         path: "index",
         element: (
@@ -94,10 +101,10 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
       },
-    ]
+    ],
   },
   {
-    path : "events",
+    path: "events",
     element: (
       <Suspense fallback={<FullScreenLoader />}>
         <Layout displayIsoCertification>
@@ -115,7 +122,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path:"division/:name",
+    path: "division/:name",
     element: (
       <Suspense fallback={<FullScreenLoader />}>
         <Layout displayIsoCertification>
@@ -123,5 +130,15 @@ export const router = createBrowserRouter([
         </Layout>
       </Suspense>
     ),
-  }
+  },
+  {
+    path: "/contact",
+    element: (
+      <Suspense fallback={<FullScreenLoader />}>
+        <Layout displayIsoCertification>
+          <Contact />
+        </Layout>
+      </Suspense>
+    ),
+  },
 ]);
