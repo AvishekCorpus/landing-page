@@ -28,7 +28,7 @@ const DivisionPage = () => {
                 },
                 imageDescription
               },
-              "pdfUrl": pdf.asset->url
+              "url": pdf.asset->url
             }
           }`);
           const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}&$name="${encodeURIComponent(
@@ -124,10 +124,10 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
         <h3>{product.name}</h3>
         <p>{product.description}</p>
 
-        {product?.pdfUrl ? (
+        {product?.url ? (
           <button
             className="know-more-button"
-            onClick={() => window.open(product?.pdfUrl, "_blank")}
+            onClick={() => window.open(product?.url, "_blank")}
           >
             Know more
           </button>
