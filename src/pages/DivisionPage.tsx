@@ -27,7 +27,8 @@ const DivisionPage = () => {
                   url
                 },
                 imageDescription
-              }
+              },
+              "pdfUrl": pdf.asset->url
             }
           }`);
           const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}&$name="${encodeURIComponent(
@@ -102,17 +103,17 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
         product?.images ? (prevIndex + 1) % product.images.length : 0
       );
     }, Math.random() * (3000 - 2000) + 2000); // Random value between 2000 and 3000ms
-  
+
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, [product?.images]);
-  
+
 
   return (
     <div
-      className={`product-card ${
+    className={`product-card ${
         index % 2 === 0 ? "even-card" : "odd-card"
       }`}
-    >
+      >
       <div className="product-image-container">
         <img
           src={product?.images?.[currentImageIndex]?.asset?.url || "https://via.placeholder.com/150"}
@@ -122,7 +123,17 @@ const ProductCard = ({ product, index }: { product: any; index: number }) => {
       <div className="product-info">
         <h3>{product.name}</h3>
         <p>{product.description}</p>
-        <button className="know-more-button">Know more</button>
+
+        {product?.pdfUrl ? (
+          <button
+            className="know-more-button"
+            onClick={() => window.open(product?.pdfUrl, "_blank")}
+          >
+            Know more
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
