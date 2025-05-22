@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card } from 'antd';
+import { Card } from 'antd';
 import "./style.css";
 
 interface Props {

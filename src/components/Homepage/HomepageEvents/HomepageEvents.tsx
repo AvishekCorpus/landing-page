@@ -9,7 +9,7 @@ interface Event {
 }
 
 const HomepageEvents: React.FC = () => {
-  const [events, setEvents] = useState<Event[]>([
+  const [events] = useState<Event[]>([
     {
       icon: <PiTelevisionLight />,
       title: "CSR",

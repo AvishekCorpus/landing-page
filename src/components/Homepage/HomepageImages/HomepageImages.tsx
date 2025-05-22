@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Carousel, Skeleton } from "antd";
 import "./style.css";
-import { Image } from "../../../pages/Homepage";
+import type { Image } from "../../../pages/Homepage";
 
 interface Props {
   images: Image[];

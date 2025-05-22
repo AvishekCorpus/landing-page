@@ -5,6 +5,7 @@ import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
 import Contact from "./pages/Contact";
 import DivisionPage from "./pages/DivisionPage";
+import BrandPortfolioPage from "./pages/BrandPortfolioPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
@@ -121,15 +122,31 @@ export const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+
   {
-    path: "division/:name",
-    element: (
-      <Suspense fallback={<FullScreenLoader />}>
-        <Layout displayIsoCertification>
-          <DivisionPage />
-        </Layout>
-      </Suspense>
-    ),
+    path: "division",
+    children: [
+      {
+        path: "",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <BrandPortfolioPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: ":name",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <DivisionPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+    ],
   },
   {
     path: "/contact",

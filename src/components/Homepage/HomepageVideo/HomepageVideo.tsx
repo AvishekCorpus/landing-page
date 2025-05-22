@@ -1,25 +1,25 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import "./style.css"
 
 const HomepageVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const buttonTimeout = useRef<NodeJS.Timeout | null>(null);
+  // const [isPlaying, setIsPlaying] = useState(true);
+  // const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const buttonTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  // const togglePlayPause = () => {
+  //   if (videoRef.current) {
+  //     if (isPlaying) {
+  //       videoRef.current.pause();
+  //     } else {
+  //       videoRef.current.play();
+  //     }
+  //     setIsPlaying(!isPlaying);
+  //   }
+  // };
 
   const handleMouseActivity = () => {
-    setIsButtonVisible(true);
+    // setIsButtonVisible(true);
     resetButtonTimeout();
   };
 
@@ -28,7 +28,7 @@ const HomepageVideo = () => {
       clearTimeout(buttonTimeout.current);
     }
     buttonTimeout.current = setTimeout(() => {
-      setIsButtonVisible(false);
+      // setIsButtonVisible(false);
     }, 1000); // Hide button after 1 second of inactivity
   };
 

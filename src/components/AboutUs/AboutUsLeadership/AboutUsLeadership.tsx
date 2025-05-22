@@ -2,7 +2,7 @@ import { Card, Skeleton } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Leader } from '../../../pages/AboutUs/AboutUsPage';
+import type { Leader } from '../../../pages/AboutUs/AboutUsPage';
 import './style.css';
 
 interface AboutUsLeadershipProps {
@@ -11,7 +11,7 @@ interface AboutUsLeadershipProps {
 
 const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [leaders,setLeaders] = useState<any[]>([]);
+  const [leaders,setLeaders] = useState([]);
   const navigate = useNavigate();
 
   const getData = async () => {

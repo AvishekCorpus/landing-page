@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -9,7 +9,10 @@ interface ErrorBoundaryState {
   hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -17,7 +20,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   static getDerivedStateFromError(error: Error) {
     // Update state to show fallback UI
-    return { hasError: true };
+    return { hasError: true, Error: error.message };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
@@ -29,7 +32,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     if (this.state.hasError) {
       // Render fallback UI
       return (
-        <div style={{ textAlign: 'center', padding: '20px' }}>
+        <div style={{ textAlign: "center", padding: "20px" }}>
           <h1>Something went wrong.</h1>
           <p>We are working to fix this issue. Please try again later.</p>
           <Link to="/">Go to Home</Link>
@@ -37,7 +40,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       );
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 

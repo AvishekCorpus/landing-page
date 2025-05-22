@@ -21,7 +21,7 @@ const Footer2: React.FC = () => {
         linkedin
       }
     }`);
-    const url = `https://ichahr2c.api.sanity.io/v1/data/query/production?query=${query}`;
+    const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
     setSocialLinks(res?.result?.socialLinks || {});
   };

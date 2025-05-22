@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import Title from "antd/es/typography/Title";
 import { Card, Carousel, Col, Skeleton } from "antd";
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
-import { Products } from "../../../pages/Homepage";
+import type { Products } from "../../../pages/Homepage";
 
 interface Props {
   cardData: Products[] | null;
