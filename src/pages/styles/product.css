@@ -1,0 +1,167 @@
+/* :root {
+    --brand-color-green: #2e7d32;
+    --max-content-width: 1200px;
+} */
+/* 
+:root {
+    line-height: 1.6;
+    font-family: "Raleway", sans-serif;
+} */
+
+.product-container {
+    /* padding: 0 20px 0 20px; */
+    margin: auto 20%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.product-content {
+    width: 100%;
+    /* margin: 0 50px 0px 50px; */
+    box-sizing: border-box;
+}
+
+.brand-intro {
+    display: flex;
+    box-sizing: border-box;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.brand-intro-content {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.brand-intro-content.mobile {
+    flex-direction: column;
+}
+
+.product-image {
+    border-radius: 20px;
+    border: 1px solid #e0e0e0;
+    /* margin: 20px auto; */
+    max-width: 100%;
+    /* height: auto; */
+    height: 540px;
+    width: 540px;
+}
+
+.mobile-image {
+    width: 100%;
+    height: auto;
+    margin: 40px auto;
+}
+
+.product-text-content {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.brand-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--brand-color-green);
+    /* margin: 0 0 10px 0;
+    font-family: "Raleway", sans-serif; */
+}
+
+.product-description {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    font-family: "Raleway", sans-serif;
+}
+
+.product-details {
+    margin-top: 30px;
+}
+
+.drug-head {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--brand-color-green);
+    margin-bottom: 10px;
+    font-family: "Raleway", sans-serif;
+}
+
+.drug-content {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: "Raleway", sans-serif;
+}
+
+/* .indications-list {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: "Raleway", sans-serif;
+} */
+
+.ant-tag {
+    font-size: 15px;
+    padding: 10px;
+    /* margin: 10%; */
+    border-radius: 20px;
+
+}
+
+.disclaimer-text {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #666;
+    font-family: "Raleway", sans-serif;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .product-container {
+        padding: 15px;
+        margin: auto 5%;
+    }
+
+    .brand-intro-content {
+        flex-direction: column;
+    }
+
+    .product-text-content {
+        margin-left: 0;
+    }
+
+    .brand-title {
+        font-size: 1.8em;
+    }
+
+    .product-description {
+        font-size: 1em;
+    }
+
+    .drug-head {
+        font-size: 1.2rem;
+    }
+
+    .drug-content {
+        font-size: 0.95rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .product-container {
+        padding: 0 10px;
+    }
+
+    .brand-title {
+        font-size: 1.5em;
+    }
+
+    .drug-head {
+        font-size: 1.1rem;
+    }
+}

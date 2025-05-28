@@ -1,17 +1,19 @@
-import { Card, Skeleton } from 'antd';
-import Meta from 'antd/es/card/Meta';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import type { Leader } from '../../../pages/AboutUs/AboutUsPage';
-import './style.css';
+import { Card, Skeleton } from "antd";
+import Meta from "antd/es/card/Meta";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import type { Leader } from "../../../pages/AboutUs/AboutUsPage";
+import "./style.css";
 
 interface AboutUsLeadershipProps {
   description: string;
 }
 
-const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) => {
+const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({
+  description,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [leaders,setLeaders] = useState([]);
+  const [leaders, setLeaders] = useState<Leader[]>([]);
   const navigate = useNavigate();
 
   const getData = async () => {
@@ -30,7 +32,7 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) =>
     const res = await fetch(url).then((res) => res.json());
 
     if (res?.result) {
-      console.log(res?.result)
+      console.log(res?.result);
       setLeaders(res?.result);
     }
   };
@@ -43,7 +45,7 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) =>
   }, [description]);
 
   const handleCardClick = (leader: Leader) => {
-    navigate(`/about-us/leaders/${leader.guid}`);  
+    navigate(`/about-us/leaders/${leader.guid}`);
   };
 
   return (
@@ -55,14 +57,17 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) =>
         {isLoading ? (
           <Skeleton active paragraph={{ rows: 2 }} />
         ) : (
-          description || 'No leadership description available.'
+          description || "No leadership description available."
         )}
       </div>
       <div className="aboutusleadership-leaders">
         {isLoading ? (
           <div className="aboutusleadership-leaders-skeleton">
             {[...Array(3)].map((_, index) => (
-              <div className="aboutusleadership-leader-card-skeleton" key={index}>
+              <div
+                className="aboutusleadership-leader-card-skeleton"
+                key={index}
+              >
                 <Skeleton loading={true} avatar paragraph={{ rows: 2 }} />
               </div>
             ))}
@@ -74,12 +79,18 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({ description }) =>
                 <div className="aboutusleadership-leader-card" key={index}>
                   <Card
                     hoverable
-                    cover={<img className="aboutusleadership-leader-image" alt={leader.name} src={leader.image.asset.url} />}
+                    cover={
+                      <img
+                        className="aboutusleadership-leader-image"
+                        alt={leader.name}
+                        src={leader.image.asset.url}
+                      />
+                    }
                     onClick={() => handleCardClick(leader)}
                   >
                     <Meta
-                      title={leader.name || 'No Name'}
-                      description={`${leader.designation || 'No Designation'}`}
+                      title={leader.name || "No Name"}
+                      description={`${leader.designation || "No Designation"}`}
                     />
                   </Card>
                 </div>

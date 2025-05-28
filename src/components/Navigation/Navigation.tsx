@@ -85,7 +85,7 @@ const Navigation: React.FC = () => {
     }
   };
 
-  const handleSubmenuClick = (menuData: MenuItem, submenuItem: MenuItem) => {
+  const handleSubmenuClick = (submenuItem: MenuItem) => {
     if (submenuItem.submenu) {
       // Toggle nested submenu
       setExpandedMobileMenus((prev) =>
@@ -152,7 +152,7 @@ const Navigation: React.FC = () => {
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();
-                        handleSubmenuClick(item, subItem);
+                        handleSubmenuClick(subItem);
                       }}
                     >
                       {subItem.name}
@@ -168,7 +168,7 @@ const Navigation: React.FC = () => {
                               }`}
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleSubmenuClick(subItem, nestedItem);
+                                handleSubmenuClick(nestedItem);
                               }}
                             >
                               {nestedItem.name}
@@ -219,7 +219,7 @@ const Navigation: React.FC = () => {
                           }`}
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleSubmenuClick(item, subItem);
+                            handleSubmenuClick(subItem);
                           }}
                         >
                           <div className="mobile-menu-item">
@@ -245,7 +245,7 @@ const Navigation: React.FC = () => {
                                     }`}
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      handleSubmenuClick(subItem, nestedItem);
+                                      handleSubmenuClick(nestedItem);
                                     }}
                                   >
                                     {nestedItem.name}

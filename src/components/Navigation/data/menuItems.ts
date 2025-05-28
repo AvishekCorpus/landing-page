@@ -1,15 +1,6 @@
 import type { MenuItem } from "../types/navigation";
 
 export const menuItems: MenuItem[] = [
-
-  {
-    name: "About Us",
-    route: "/about-us",
-    submenu: [
-      { name: "About us", route: "/about-us" },
-      { name: "Vision & mission", route: "/vision-and-mission" },
-    ],
-  },
   // {
   //   name: "Divisions",
   //   route: "/division",
@@ -39,16 +30,25 @@ export const menuItems: MenuItem[] = [
   //     { name: "Enzymes & Pre-Probiotics", route: "/division/Enzymes & Pre-Probiotics" },
   //   ],
   // },
-  { name: "Events", route: "/events" },
+
   {
     name: "Life at Corpus",
     route: "/life-at-corpus",
     submenu: [
-      { name: "Life at Corpus", route: "/life-at-corpus/index" },
+      { name: "Life at Corpus", route: "/life-at-corpus" },
       { name: "Team Corpus", route: "/life-at-corpus/team" },
       { name: "Work with us", route: "/life-at-corpus/work-with-us" },
       { name: "Training & Development", route: "/life-at-corpus/training" },
     ],
   },
+  {
+    name: "About Us",
+    route: "/about-us",
+    submenu: [
+      { name: "About us", route: "/about-us" },
+      { name: "Vision & mission", route: "/vision-and-mission" },
+    ],
+  },
+  { name: "Events", route: "/events" },
   { name: "Contact", route: "/contact" },
 ];
