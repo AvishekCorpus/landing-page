@@ -104,15 +104,16 @@ const Navigation: React.FC = () => {
   return (
     <nav className="navigation">
       <div className="desktop-navbar">
-        <div
+        <img
           className="logo"
           onClick={() => {
             navigate("/");
             setActiveDropdown(null);
           }}
-        >
-          Company Logo
-        </div>
+          src="/logo-wide.png"
+          alt="Corpus Life Science"
+        />
+
         <ul className="nav-links">
           {menuData.map((item) => (
             <li
@@ -186,7 +187,16 @@ const Navigation: React.FC = () => {
       </div>
 
       <div className="mobile-navbar">
-        <div className="logo">Company Logo</div>
+        {/* <div className="logo">Company Logo</div> */}
+        <img
+          className="logo"
+          onClick={() => {
+            navigate("/");
+            setActiveDropdown(null);
+          }}
+          src="/logo-wide.png"
+          alt="Corpus Life Science"
+        />
         <button className="menu-toggle" onClick={toggleMenu}>
           {isMenuOpen ? "✕" : "☰"}
         </button>
