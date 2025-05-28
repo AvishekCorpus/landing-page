@@ -91,6 +91,7 @@ const LifeAtCorpus: React.FC = () => {
     setOurCulture(result?.ourCulture);
   };
   useEffect(() => {
+    document.title = "Life at Corpus | Corpus Life Science";
     getData();
   }, []);
   return (

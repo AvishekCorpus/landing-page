@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
-import { Management } from "../../../pages/Homepage";
+import type { Management } from "../../../pages/Homepage";
 import { Skeleton } from "antd"; // Importing Ant Design Skeleton
 
 interface Props {

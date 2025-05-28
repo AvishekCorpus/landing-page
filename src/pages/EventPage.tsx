@@ -48,6 +48,7 @@ const EventPage: React.FC<Props> = () => {
   };
 
   useEffect(() => {
+    document.title = "Events | Corpus Life Science";
     getData();
   }, []);
 
@@ -97,7 +98,12 @@ const EventPage: React.FC<Props> = () => {
                   <div className="event-line"></div>
                 </div>
                 <div
-                  style={{ color: "gray", fontWeight: 400, textAlign:"center", lineHeight :"30px" }}
+                  style={{
+                    color: "gray",
+                    fontWeight: 400,
+                    textAlign: "center",
+                    lineHeight: "30px",
+                  }}
                 >
                   {card.description}
                 </div>

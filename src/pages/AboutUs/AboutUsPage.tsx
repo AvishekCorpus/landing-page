@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import AboutUsLeadership from '../../components/AboutUs/AboutUsLeadership/AboutUsLeadership';
-import AboutUsVisionMission from '../../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission';
-import PageHeadingCard from '../../components/shared/PageHeadingCard/PageHeadingCard';
-import '../styles/aboutus.css';
+import React, { useEffect, useState } from "react";
+import AboutUsLeadership from "../../components/AboutUs/AboutUsLeadership/AboutUsLeadership";
+import AboutUsVisionMission from "../../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission";
+import PageHeadingCard from "../../components/shared/PageHeadingCard/PageHeadingCard";
+import "../styles/aboutus.css";
 
 // Define interface for AboutUs data
 export interface AboutUsData {
@@ -41,8 +41,41 @@ export interface Leader {
   name: string;
   designation: string;
   tagline: string;
-  guid : string;
+  guid: string;
 }
+
+export type AboutUsDto = {
+  description: string;
+  image: {
+    asset: {
+      url: string;
+    };
+    imageDescription: string;
+  };
+  leadership: {
+    description: string;
+    leaders: string[];
+  };
+  mission: {
+    description: string;
+    image: {
+      asset: {
+        url: string;
+      };
+      imageDescription: string;
+    };
+  };
+  title: string;
+  vision: {
+    description: string;
+    image: {
+      asset: {
+        url: string;
+      };
+      imageDescription: string;
+    };
+  };
+};
 
 const AboutUsPage: React.FC = () => {
   const [aboutUsData, setAboutUsData] = useState<AboutUsData | null>(null);
@@ -98,33 +131,37 @@ const AboutUsPage: React.FC = () => {
     }
   };
 
-  const transformAboutUsData = (data: any): AboutUsData => ({
-    title: data?.title || 'No Title',
+  const transformAboutUsData = (data: AboutUsDto): AboutUsData => ({
+    title: data?.title || "No Title",
     image: {
-      src: data?.image?.asset?.url || '',
-      description: data?.image?.imageDescription || 'No description available',
+      src: data?.image?.asset?.url || "",
+      description: data?.image?.imageDescription || "No description available",
     },
-    description: data?.description || 'No description available',
+    description: data?.description || "No description available",
     vision: {
       image: {
-        src: data?.vision?.image?.asset?.url || '',
-        description: data?.vision?.image?.imageDescription || 'No image description',
+        src: data?.vision?.image?.asset?.url || "",
+        description:
+          data?.vision?.image?.imageDescription || "No image description",
       },
-      description: data?.vision?.description || 'No description available',
+      description: data?.vision?.description || "No description available",
     },
     mission: {
       image: {
-        src: data?.mission?.image?.asset?.url || '',
-        description: data?.mission?.image?.imageDescription || 'No image description',
+        src: data?.mission?.image?.asset?.url || "",
+        description:
+          data?.mission?.image?.imageDescription || "No image description",
       },
-      description: data?.mission?.description || 'No description available',
+      description: data?.mission?.description || "No description available",
     },
     leadership: {
-      description: data?.leadership?.description || 'No leadership description available',
+      description:
+        data?.leadership?.description || "No leadership description available",
     },
   });
 
   useEffect(() => {
+    document.title = "About Us | Corpus Life Science";
     getAboutUsData();
   }, []);
 
@@ -132,12 +169,15 @@ const AboutUsPage: React.FC = () => {
     <div className="aboutuspage-container">
       {aboutUsData ? (
         <>
-          <PageHeadingCard image={aboutUsData.image} title='About us' />
-          <div className='about-us-page-description'>{aboutUsData.description}</div>
-          <AboutUsVisionMission vision={aboutUsData.vision} mission={aboutUsData.mission} />
-          <AboutUsLeadership 
-            description={aboutUsData.leadership.description} 
+          <PageHeadingCard image={aboutUsData.image} title="About us" />
+          <div className="about-us-page-description">
+            {aboutUsData.description}
+          </div>
+          <AboutUsVisionMission
+            vision={aboutUsData.vision}
+            mission={aboutUsData.mission}
           />
+          <AboutUsLeadership description={aboutUsData.leadership.description} />
         </>
       ) : (
         <p>Loading...</p>

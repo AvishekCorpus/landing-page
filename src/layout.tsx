@@ -1,6 +1,5 @@
 import React from "react";
 import Navigation from "./components/Navigation/Navigation";
-import Footer from "./components/Footer/Footer";
 import Footer2 from "./components/Footer2/Footer2";
 import { FiPhone } from "react-icons/fi";
 import { AiOutlineMail } from "react-icons/ai";

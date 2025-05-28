@@ -5,6 +5,8 @@ import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
 import Contact from "./pages/Contact";
 import DivisionPage from "./pages/DivisionPage";
+import BrandPortfolioPage from "./pages/BrandPortfolioPage";
+import ProductPage from "./pages/ProductsPage";
 
 // Lazy load the page components
 const Homepage = React.lazy(() => import("./pages/Homepage"));
@@ -62,7 +64,7 @@ export const router = createBrowserRouter([
     path: "/life-at-corpus",
     children: [
       {
-        path: "index",
+        path: "",
         element: (
           <Suspense fallback={<FullScreenLoader />}>
             <Layout displayIsoCertification>
@@ -121,15 +123,31 @@ export const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+
   {
-    path: "division/:name",
-    element: (
-      <Suspense fallback={<FullScreenLoader />}>
-        <Layout displayIsoCertification>
-          <DivisionPage />
-        </Layout>
-      </Suspense>
-    ),
+    path: "division",
+    children: [
+      {
+        path: "",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <BrandPortfolioPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: ":name",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <DivisionPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+    ],
   },
   {
     path: "/contact",
@@ -140,5 +158,30 @@ export const router = createBrowserRouter([
         </Layout>
       </Suspense>
     ),
+  },
+  {
+    path: "products",
+    children: [
+      // {
+      //   path: "",
+      //   element: (
+      //     <Suspense fallback={<FullScreenLoader />}>
+      //       <Layout displayIsoCertification>
+      //         <ProductPage />
+      //       </Layout>
+      //     </Suspense>
+      //   ),
+      // },
+      {
+        path: ":id",
+        element: (
+          <Suspense fallback={<FullScreenLoader />}>
+            <Layout displayIsoCertification>
+              <ProductPage />
+            </Layout>
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);

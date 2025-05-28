@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeadingCard from "../components/shared/PageHeadingCard/PageHeadingCard";
 import "./styles/contact.css";
 import "./styles/division.css";
@@ -37,6 +37,10 @@ const Contact: React.FC = () => {
       });
     }, 2000);
   };
+
+  useEffect(() => {
+    document.title = "Contact Us | Corpus Life Science";
+  }, []);
 
   return (
     <div className="">

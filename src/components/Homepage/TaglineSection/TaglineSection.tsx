@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Skeleton } from "antd";
-import { VideoState } from "../../../pages/Homepage";
+import type { VideoState } from "../../../pages/Homepage";
 import "./style.css";
 
 interface Props {
@@ -12,7 +12,7 @@ const TaglineSection: React.FC<Props> = ({ videoState }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const buttonTimeout = useRef<NodeJS.Timeout | null>(null);
+  const buttonTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const togglePlayPause = () => {
     if (videoRef.current) {

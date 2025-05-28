@@ -1,5 +1,5 @@
-import { Button, Collapse, message } from "antd";
-import React, { useState } from "react";
+import { Button, Collapse } from "antd";
+import React from "react";
 import "./style.css";
 
 const { Panel } = Collapse;
@@ -19,74 +19,74 @@ interface WorkWithUsJobOpeningsCardProps {
 const WorkWithUsJobOpeningsCard: React.FC<WorkWithUsJobOpeningsCardProps> = ({
   jobOpenings,
 }) => {
-  const [cvFiles, setCvFiles] = useState<{ [key: number]: File | null }>({});
-  const [filePreviews, setFilePreviews] = useState<{
-    [key: number]: string | null;
-  }>({});
-  const [cvFileSizeErrors, setCvFileSizeErrors] = useState<{
-    [key: number]: boolean;
-  }>({});
+  // const [cvFiles, setCvFiles] = useState<{ [key: number]: File | null }>({});
+  // const [filePreviews, setFilePreviews] = useState<{
+  //   [key: number]: string | null;
+  // }>({});
+  // const [cvFileSizeErrors, setCvFileSizeErrors] = useState<{
+  //   [key: number]: boolean;
+  // }>({});
 
-  const handleCvUpload = (file: any, jobIndex: number) => {
-    const isPdf = file.type === "application/pdf";
-    const isDoc =
-      file.type === "application/msword" ||
-      file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-    const fileSize = file.size / 1024 / 1024; // in MB
+  // const handleCvUpload = (file: any, jobIndex: number) => {
+  //   const isPdf = file.type === "application/pdf";
+  //   const isDoc =
+  //     file.type === "application/msword" ||
+  //     file.type ===
+  //       "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  //   const fileSize = file.size / 1024 / 1024; // in MB
 
-    if (!isPdf && !isDoc) {
-      message.error("You can only upload PDF or DOC files.");
-      return false;
-    }
+  //   if (!isPdf && !isDoc) {
+  //     message.error("You can only upload PDF or DOC files.");
+  //     return false;
+  //   }
 
-    if (fileSize > 8) {
-      message.error("File size exceeds 8MB. Please upload a smaller file.");
-      setCvFileSizeErrors((prevErrors) => ({
-        ...prevErrors,
-        [jobIndex]: true,
-      }));
-      return false;
-    }
+  //   if (fileSize > 8) {
+  //     message.error("File size exceeds 8MB. Please upload a smaller file.");
+  //     setCvFileSizeErrors((prevErrors) => ({
+  //       ...prevErrors,
+  //       [jobIndex]: true,
+  //     }));
+  //     return false;
+  //   }
 
-    setCvFiles((prevFiles) => ({ ...prevFiles, [jobIndex]: file }));
+  //   setCvFiles((prevFiles) => ({ ...prevFiles, [jobIndex]: file }));
 
-    // Set file preview
-    if (isPdf) {
-      setFilePreviews((prevPreviews) => ({
-        ...prevPreviews,
-        [jobIndex]: URL.createObjectURL(file),
-      }));
-    } else if (isDoc) {
-      setFilePreviews((prevPreviews) => ({
-        ...prevPreviews,
-        [jobIndex]: file.name,
-      }));
-    }
+  //   // Set file preview
+  //   if (isPdf) {
+  //     setFilePreviews((prevPreviews) => ({
+  //       ...prevPreviews,
+  //       [jobIndex]: URL.createObjectURL(file),
+  //     }));
+  //   } else if (isDoc) {
+  //     setFilePreviews((prevPreviews) => ({
+  //       ...prevPreviews,
+  //       [jobIndex]: file.name,
+  //     }));
+  //   }
 
-    setCvFileSizeErrors((prevErrors) => ({ ...prevErrors, [jobIndex]: false }));
-    return false;
-  };
+  //   setCvFileSizeErrors((prevErrors) => ({ ...prevErrors, [jobIndex]: false }));
+  //   return false;
+  // };
 
-  const handleSubmitCv = (jobIndex: number) => {
-    if (!cvFiles[jobIndex]) {
-      message.error("Please upload your CV before submitting.");
-      return;
-    }
-    message.success("CV submitted successfully!");
-  };
+  // const handleSubmitCv = (jobIndex: number) => {
+  //   if (!cvFiles[jobIndex]) {
+  //     message.error("Please upload your CV before submitting.");
+  //     return;
+  //   }
+  //   message.success("CV submitted successfully!");
+  // };
 
-  const handleDeleteFile = (jobIndex: number) => {
-    setCvFiles((prevFiles) => ({ ...prevFiles, [jobIndex]: null }));
-    setFilePreviews((prevPreviews) => ({ ...prevPreviews, [jobIndex]: null }));
-    message.success("File deleted successfully!");
-  };
+  // const handleDeleteFile = (jobIndex: number) => {
+  //   setCvFiles((prevFiles) => ({ ...prevFiles, [jobIndex]: null }));
+  //   setFilePreviews((prevPreviews) => ({ ...prevPreviews, [jobIndex]: null }));
+  //   message.success("File deleted successfully!");
+  // };
 
-  const handleFileClick = (jobIndex: number) => {
-    if (filePreviews[jobIndex]) {
-      window.open(filePreviews[jobIndex] as string, "_blank");
-    }
-  };
+  // const handleFileClick = (jobIndex: number) => {
+  //   if (filePreviews[jobIndex]) {
+  //     window.open(filePreviews[jobIndex] as string, "_blank");
+  //   }
+  // };
 
   return (
     <Collapse

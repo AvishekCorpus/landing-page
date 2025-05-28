@@ -1,6 +1,7 @@
-import React from 'react';
-import { Card, Row, Col, Skeleton } from 'antd';
-import './style.css';
+import React from "react";
+import { Card, Row, Col, Skeleton } from "antd";
+import "./style.css";
+// import { LineOutlined } from "@ant-design/icons";
 
 // Define the types for Vision and Mission Props
 interface AboutUsVisionMissionProps {
@@ -20,7 +21,10 @@ interface AboutUsVisionMissionProps {
   };
 }
 
-const AboutUsVisionMission: React.FC<AboutUsVisionMissionProps> = ({ vision, mission }) => {
+const AboutUsVisionMission: React.FC<AboutUsVisionMissionProps> = ({
+  vision,
+  mission,
+}) => {
   // Check if the data is empty or loading
   const isLoading = !vision || !mission;
 
@@ -33,20 +37,43 @@ const AboutUsVisionMission: React.FC<AboutUsVisionMissionProps> = ({ vision, mis
             hoverable
             cover={
               isLoading ? (
-                <Skeleton.Image active style={{width :"100%", height:"50vh"}} />
+                <Skeleton.Image
+                  active
+                  style={{ width: "100%", height: "50vh" }}
+                />
               ) : (
-                <img alt="Vision" src={vision.image.src} className="card-image" />
+                <img
+                  alt="Vision"
+                  src={vision.image.src}
+                  className="card-image"
+                />
               )
             }
           >
             <div className="card-title-wrapper">
               <div className="line"></div>
-              <h3 className="card-title" style={{ color: 'var(--orange)' }}>
-                {isLoading ? <Skeleton.Input active size="small" style={{ width: 100 }} /> : 'Vision'}
+              <h3 className="card-title" style={{ color: "var(--orange)" }}>
+                {isLoading ? (
+                  <Skeleton.Input active size="small" style={{ width: 100 }} />
+                ) : (
+                  "Vision"
+                )}
               </h3>
               <div className="line"></div>
             </div>
-            <p className=''>{isLoading ? <Skeleton paragraph={{ rows: 2 }} active /> : vision.description}</p>
+            <p
+              style={{
+                lineHeight: "27px",
+                fontSize: "15px",
+                fontFamily: "Raleway",
+              }}
+            >
+              {isLoading ? (
+                <Skeleton paragraph={{ rows: 2 }} active />
+              ) : (
+                vision.description
+              )}
+            </p>
           </Card>
         </Col>
 
@@ -56,20 +83,43 @@ const AboutUsVisionMission: React.FC<AboutUsVisionMissionProps> = ({ vision, mis
             hoverable
             cover={
               isLoading ? (
-                <Skeleton.Image active style={{width :"100%", height:"50vh"}} />
+                <Skeleton.Image
+                  active
+                  style={{ width: "100%", height: "50vh" }}
+                />
               ) : (
-                <img alt="Mission" src={mission.image.src} className="card-image" />
+                <img
+                  alt="Mission"
+                  src={mission.image.src}
+                  className="card-image"
+                />
               )
             }
           >
             <div className="card-title-wrapper">
               <div className="line"></div>
-              <h3 className="card-title" style={{ color: 'teal' }}>
-                {isLoading ? <Skeleton.Input active size="small" style={{ width: 100 }} /> : 'Mission'}
+              <h3 className="card-title" style={{ color: "teal" }}>
+                {isLoading ? (
+                  <Skeleton.Input active size="small" style={{ width: 100 }} />
+                ) : (
+                  "Mission"
+                )}
               </h3>
               <div className="line"></div>
             </div>
-            <p>{isLoading ? <Skeleton paragraph={{ rows: 2 }} active /> : mission.description}</p>
+            <p
+              style={{
+                lineHeight: "27px",
+                fontSize: "15px",
+                fontFamily: "Raleway",
+              }}
+            >
+              {isLoading ? (
+                <Skeleton paragraph={{ rows: 2 }} active />
+              ) : (
+                mission.description
+              )}
+            </p>
           </Card>
         </Col>
       </Row>

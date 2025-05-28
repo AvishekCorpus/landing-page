@@ -1,8 +1,8 @@
-import { Card, Carousel, Typography } from "antd";
+import { Card, Carousel } from "antd";
 import React, { useEffect, useState } from "react";
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import "./style.css";
-const { Title, Paragraph } = Typography;
+// const { Title, Paragraph } = Typography;
 
 interface PolicyCard {
   title: string;
