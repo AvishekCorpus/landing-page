@@ -161,6 +161,7 @@ const AboutUsPage: React.FC = () => {
   });
 
   useEffect(() => {
+    document.title = "About Us | Corpus Life Science";
     getAboutUsData();
   }, []);
 

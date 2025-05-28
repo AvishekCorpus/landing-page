@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import PageHeadingCard from "../components/shared/PageHeadingCard/PageHeadingCard";
 import "./styles/contact.css";
 import "./styles/division.css";
@@ -37,6 +37,10 @@ const Contact: React.FC = () => {
       });
     }, 2000);
   };
+
+  useEffect(() => {
+    document.title = "Contact Us | Corpus Life Science";
+  }, []);
 
   return (
     <div className="">
@@ -195,3 +199,6 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error("Function not implemented.");
+}

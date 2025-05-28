@@ -144,6 +144,7 @@ const Homepage: React.FC<Props> = () => {
   }
 
   useEffect(() => {
+    document.title = "Home | Corpus Life Science";
     getData();
   }, []);
 

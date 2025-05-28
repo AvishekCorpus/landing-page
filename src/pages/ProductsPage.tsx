@@ -66,6 +66,7 @@ const ProductPage = () => {
   }
 
   useEffect(() => {
+    document.title = "Product | Corpus Life Science";
     getData();
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -75,8 +76,6 @@ const ProductPage = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-
 
   if (Loading) {
     return <div>Loading...</div>;

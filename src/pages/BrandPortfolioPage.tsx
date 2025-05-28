@@ -15,6 +15,7 @@ const BrandPortfolioPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    document.title = "Brand Portfolio | Corpus Life Science";
     const fetchDivisionData = async () => {
       setLoading(true);
       setError(null);

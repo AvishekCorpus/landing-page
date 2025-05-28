@@ -34,6 +34,7 @@ const DivisionPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    document.title = "Brand Portfolio | Division";
     if (name) {
       const fetchDivisionData = async () => {
         setLoading(true);
