@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeadingCard from "../components/shared/PageHeadingCard/PageHeadingCard";
 import "./styles/contact.css";
 import "./styles/division.css";
@@ -199,6 +199,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-function useEffect(arg0: () => void, arg1: never[]) {
-  throw new Error("Function not implemented.");
-}
