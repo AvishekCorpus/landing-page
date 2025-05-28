@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import FullScreenLoader from "./components/FullscreenLoader/FullscreenLoader";
 import ErrorBoundary from "./ErrorBoundary";
 import Layout from "./layout";
@@ -24,7 +24,7 @@ const LifeAtCorpusTeam = React.lazy(
 );
 const EventPage = React.lazy(() => import("./pages/EventPage"));
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     element: (

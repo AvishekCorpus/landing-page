@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { menuItems } from "./data/menuItems";
 import "./Navigation.css";
 import type { MenuItem } from "./types/navigation";
+import imgUrl from "../../assets/images/logo-wide.png"; // Adjust the path as necessary
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -110,7 +111,7 @@ const Navigation: React.FC = () => {
             navigate("/");
             setActiveDropdown(null);
           }}
-          src="/logo-wide.png"
+          src={imgUrl}
           alt="Corpus Life Science"
         />
 
