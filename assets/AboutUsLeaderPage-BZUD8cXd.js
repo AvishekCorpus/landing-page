@@ -1,4 +1,4 @@
-import{d as j,r as o,j as s}from"./index-c4Cqf08r.js";const l=()=>{var i,c,r;const{id:d}=j(),[t,h]=o.useState(),x=async()=>{const n=`https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${encodeURIComponent(`*[_type == "leader" && guid == '${d}'][0] {
+import{d as j,r as o,j as s}from"./index-BVDiSRxf.js";const l=()=>{var i,c,r;const{id:d}=j(),[t,h]=o.useState(),x=async()=>{const n=`https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${encodeURIComponent(`*[_type == "leader" && guid == '${d}'][0] {
         name,
         image {
           asset -> {
