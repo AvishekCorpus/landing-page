@@ -195,7 +195,7 @@ const Navigation: React.FC = () => {
             navigate("/");
             setActiveDropdown(null);
           }}
-          src="/logo-wide.png"
+          src={imgUrl}
           alt="Corpus Life Science"
         />
         <button className="menu-toggle" onClick={toggleMenu}>
