@@ -1,4 +1,4 @@
-import{r as g,j as i,P as d}from"./index-BVDiSRxf.js";const D=()=>{const[n,m]=g.useState({sectionDescription:null,sectionImage:null,trainings:null});return g.useEffect(()=>{(async()=>{var c;const p=`https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${encodeURIComponent(`*[_type == "lifeAtCorpus"][0] {
+import{r as g,j as i,P as d}from"./index-BSgo2x5x.js";const D=()=>{const[n,m]=g.useState({sectionDescription:null,sectionImage:null,trainings:null});return g.useEffect(()=>{(async()=>{var c;const p=`https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${encodeURIComponent(`*[_type == "lifeAtCorpus"][0] {
         trainingAndDevelopment {
           sectionDescription,
           sectionImage {
