@@ -3,7 +3,7 @@
 }
 
 .aboutus-image-container {
-  height: 90vh;
+  /* height: 90vh; */
 
   img {
     width: 100vw;
@@ -43,9 +43,9 @@
 }
 
 @media (max-width: 600px) {
-  .aboutus-image-container {
+  /* .aboutus-image-container {
     height: 110vh;
-  }
+  } */
 }
 
 @media (min-width: 900px) {

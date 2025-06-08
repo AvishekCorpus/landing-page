@@ -78,7 +78,7 @@ const LifeAtCorpus: React.FC = () => {
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
     var result = res?.result?.lifeAtCorpusPage;
-    console.log(res?.result);
+    // console.log(res?.result);
     setPageData({
       image: result?.pageImage?.imageUrl,
       description: result?.pageImageDescription,

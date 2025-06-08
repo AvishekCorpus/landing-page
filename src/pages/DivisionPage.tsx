@@ -73,7 +73,7 @@ const DivisionPage = () => {
             throw new Error("No data found for the specified division.");
           }
 
-          console.log(data.result);
+          // console.log(data.result);
           setDivisionData(data.result);
 
           if (
@@ -85,8 +85,12 @@ const DivisionPage = () => {
               "No products found for this division. or division not found. or first product image is not in place not found."
             );
           }
-        } catch (err: any) {
-          setError(err.message || "An unexpected error occurred.");
+        } catch (err: unknown) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("An unexpected error occurred.");
+          }
         } finally {
           setLoading(false);
         }
@@ -141,6 +145,17 @@ const ProductCard = ({
 }) => {
   // const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -167,7 +182,11 @@ const ProductCard = ({
       </div>
       <div className="product-info">
         <h3>{product.name}</h3>
-        <p>{product.description}</p>
+        <p>
+          {product.description.split(" ").length > 10 && isMobile
+            ? product.description.split(" ").slice(0, 20).join(" ") + "..."
+            : product.description.split(" ").slice(0, 30).join(" ") + "..."}
+        </p>
 
         {product.path ? (
           <button

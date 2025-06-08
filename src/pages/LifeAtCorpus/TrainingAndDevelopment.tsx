@@ -6,7 +6,11 @@ const TrainingAndDevelopment: React.FC = () => {
   const [trainingAndDevelopmentData, setTrainingAndDevelopmentData] = useState<{
     sectionDescription: string | null;
     sectionImage: { src: string } | null;
-    trainings: Array<{ title: string; src: string; description: string }> | null;
+    trainings: Array<{
+      title: string;
+      src: string;
+      description: string;
+    }> | null;
   }>({
     sectionDescription: null,
     sectionImage: null,
@@ -49,7 +53,7 @@ const TrainingAndDevelopment: React.FC = () => {
             : null,
         });
       }
-      console.log(trainingAndDevelopmentData);
+      // console.log(trainingAndDevelopmentData);
     };
 
     getData();
@@ -67,19 +71,33 @@ const TrainingAndDevelopment: React.FC = () => {
             title="Training & Development"
           />
         )}
-      {trainingAndDevelopmentData.trainings && trainingAndDevelopmentData.trainings.map((training, index) => {
-        return (
-            <div key={index} className={index % 2 === 0 ? "training-card" : "training-card inverted"}>
-                <div className="training-image">
-                    <img src={training.src} alt={training.title} />
-                </div>
-                <div className="training-description">
-                    <h2 className={index % 2 === 0 ? "training-title" : "training-title-inverted"}>{training.title}</h2>
-                    <p>{training.description}</p>
-                </div>
+      {trainingAndDevelopmentData.trainings &&
+        trainingAndDevelopmentData.trainings.map((training, index) => {
+          return (
+            <div
+              key={index}
+              className={
+                index % 2 === 0 ? "training-card" : "training-card inverted"
+              }
+            >
+              <div className="training-image">
+                <img src={training.src} alt={training.title} />
+              </div>
+              <div className="training-description">
+                <h2
+                  className={
+                    index % 2 === 0
+                      ? "training-title"
+                      : "training-title-inverted"
+                  }
+                >
+                  {training.title}
+                </h2>
+                <p>{training.description}</p>
+              </div>
             </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 };

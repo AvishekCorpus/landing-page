@@ -1,22 +1,24 @@
 import Flex from "antd/es/flex";
 import "./styles/product.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Tag from "antd/es/tag";
 import { useParams } from "react-router-dom";
+import { Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 
 export interface Product {
-  composition: string | null;
-  description: string;
-  disclaimer: string;
+  composition?: string | null;
+  description?: string;
+  disclaimer?: string;
   dosage?: string;
-  form: string;
+  form?: string;
   imagesUrl?: string;
-  indications: string[];
+  indications?: string[];
   modeofaction?: string;
   name: string;
-  packaging: string;
-  path: string;
-  therapyArea: string;
+  packaging?: string;
+  path?: string;
+  therapyArea?: string;
   url?: string | null;
 }
 const ProductPage = () => {
@@ -26,7 +28,7 @@ const ProductPage = () => {
   const [product, setProduct] = useState<Product>();
   const { id } = useParams();
 
-  async function getData() {
+  const getData = useCallback(async () => {
     setLoading(true);
     setError(null);
     const query = encodeURIComponent(`*[_type == "products" && _id == $id][0]{
@@ -52,7 +54,7 @@ const ProductPage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.result) {
-          console.log(data.result);
+          // console.log(data.result);
           setProduct(data.result);
           setLoading(false);
           setError(null);
@@ -61,9 +63,9 @@ const ProductPage = () => {
         }
       })
       .catch((err) => {
-        setError(err.message || "An unexpected error occurred.");
-      });
-  }
+      setError(err.message || "An unexpected error occurred.");
+    });
+  }, [id]);
 
   useEffect(() => {
     document.title = "Product | Corpus Life Science";
@@ -75,7 +77,7 @@ const ProductPage = () => {
     handleResize(); // Set initial value
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [getData]);
 
   if (Loading) {
     return <div>Loading...</div>;
@@ -111,44 +113,93 @@ const ProductPage = () => {
                     alt={product.name}
                   />
                 )}
-                <p className="product-description">
-                  {product.description.trim()}
-                </p>
+                {product.description && (
+                  <p className="product-description">
+                    {product.description.trim()}
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
           <div className="product-details">
-            <h2 className="drug-head">Composition: </h2>
-            <p className="drug-content">{product.composition?.trim()}</p>
+            {product.composition && (
+              <>
+                <h2 className="drug-head">Composition: </h2>
+                <p className="drug-content">{product.composition.trim()}</p>
+              </>
+            )}
+            {product.dosage && (
+              <>
+                <h2 className="drug-head">Dosage: </h2>
+                <p className="drug-content">{product.dosage}</p>
+              </>
+            )}
 
-            <h2 className="drug-head">Dosage: </h2>
-            <p className="drug-content">{product.dosage}</p>
-
-            <h2 className="drug-head">Indications: </h2>
-            <ul className="indications-list">
-              <Flex wrap gap="small">
-                {product.indications.map(
-                  (indication: string, index: number) => (
-                    <Tag key={index} bordered={false} color="warning">
-                      {indication.trim()}
-                    </Tag>
-                  )
-                )}
-              </Flex>
-            </ul>
-
-            <h2 className="drug-head">Mode of Action: </h2>
-            <p className="drug-content">{product.modeofaction?.trim()}</p>
-
-            <h2 className="drug-head">Packaging: </h2>
-            <p className="drug-content">{product.packaging}</p>
-
-            <h2 className="drug-head">Therapy Area: </h2>
-            <p className="drug-content">{product.therapyArea}</p>
-
-            <h2 className="drug-head">Disclaimer: </h2>
-            <p className="disclaimer-text">{product.disclaimer.trim()}</p>
+            {product.form && (
+              <>
+                <h2 className="drug-head">Form: </h2>
+                <p className="drug-content">{product.form}</p>
+              </>
+            )}
+            {product.indications && (
+              <>
+                <h2 className="drug-head">Indications: </h2>
+                <ul className="indications-list">
+                  <Flex wrap gap="small">
+                    {product.indications.map(
+                      (indication: string, index: number) => (
+                        <Tag key={index} bordered={false} color="warning">
+                          {indication.trim()}
+                        </Tag>
+                      )
+                    )}
+                  </Flex>
+                </ul>
+              </>
+            )}
+            {product.modeofaction && (
+              <>
+                <h2 className="drug-head">Mode of Action: </h2>
+                <p className="drug-content">{product.modeofaction?.trim()}</p>
+              </>
+            )}
+            {product.packaging && (
+              <>
+                <h2 className="drug-head">Packaging: </h2>
+                <p className="drug-content">{product.packaging}</p>
+              </>
+            )}
+            {product.therapyArea && (
+              <>
+                <h2 className="drug-head">Therapy Area: </h2>
+                <p className="drug-content">{product.therapyArea}</p>
+              </>
+            )}
+            {product.disclaimer && (
+              <>
+                <h2 className="drug-head">Disclaimer: </h2>
+                <p className="disclaimer-text">{product.disclaimer.trim()}</p>
+              </>
+            )}
+            {product.url && (
+              <>
+                <h2 className="drug-head">Document: </h2>
+                <Button
+                  color="orange"
+                  variant="outlined"
+                  onClick={() => {
+                    if (typeof product.url === "string") {
+                      window.open(product.url, "_blank");
+                    }
+                  }}
+                >
+                  Download
+                  <DownloadOutlined />
+                </Button>
+              </>
+            )}
+            <div style={{ height: "10px" }}></div>
           </div>
         </div>
       </div>

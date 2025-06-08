@@ -32,7 +32,7 @@ const AboutUsLeadership: React.FC<AboutUsLeadershipProps> = ({
     const res = await fetch(url).then((res) => res.json());
 
     if (res?.result) {
-      console.log(res?.result);
+      // console.log(res?.result);
       setLeaders(res?.result);
     }
   };

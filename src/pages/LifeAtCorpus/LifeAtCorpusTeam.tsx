@@ -6,11 +6,11 @@ import "../styles/teamcorpus.css";
 
 const LifeAtCorpusTeam = () => {
   const [cardData, setCardData] = useState([]);
-  const [pageData,setPageData] = useState({
-    image : "",
-    description : ""
-  })
-  const [mainImage,setMainImage] = useState("");
+  const [pageData, setPageData] = useState({
+    image: "",
+    description: "",
+  });
+  const [mainImage, setMainImage] = useState("");
 
   const [slidesToShow, setSlidesToShow] = useState(4);
   const [cardWidth, setCardWidth] = useState(300);
@@ -80,18 +80,20 @@ const LifeAtCorpusTeam = () => {
     }`);
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
-    console.log(res?.result);
+    // console.log(res?.result);
     setMainImage(res?.result?.teamCorpus?.mainImage?.imageUrl);
-    setCardData(res?.result?.teamCorpus?.teamMembers)
-    setPageData({image : res?.result?.teamCorpus?.pageImage?.imageUrl , description : res?.result?.teamCorpus?.pageImageDescription})
+    setCardData(res?.result?.teamCorpus?.teamMembers);
+    setPageData({
+      image: res?.result?.teamCorpus?.pageImage?.imageUrl,
+      description: res?.result?.teamCorpus?.pageImageDescription,
+    });
   };
   return (
     <div>
       <PageHeadingCard
         title="Team Corpus"
         image={{
-          description:
-            pageData?.description,
+          description: pageData?.description,
           src: pageData?.image,
         }}
       />
