@@ -60,7 +60,7 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
     };
   }, []);
 
-  if ( !cardData || cardData.length === 0) {
+  if (!cardData || cardData.length === 0) {
     return (
       <div className="featured-product-container">
         <div className="featured-title">
@@ -81,10 +81,15 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
           {/* Skeleton loaders mimicking cards */}
           {[...Array(slidesToShow)].map((_, index) => (
             <div key={index} className="featured-card">
-               <Col key={index} xs={24} sm={12} md={8} lg={6}>
+              <Col key={index} xs={24} sm={12} md={8} lg={6}>
                 <Card
                   style={{ width: 220, margin: "2rem auto" }}
-                  cover={<Skeleton.Image active style={{ height: 150, width:"100%" }} />}
+                  cover={
+                    <Skeleton.Image
+                      active
+                      style={{ height: 150, width: "100%" }}
+                    />
+                  }
                   loading
                   actions={[<Skeleton.Button active />]}
                 >
@@ -127,7 +132,7 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
                 </div>
               }
               hoverable
-              cover={<img alt="example" src={card.imageUrl} />}
+              cover={<img alt="example" src={card.imagesUrl} />}
               style={{ width: cardWidth, margin: "0 auto" }}
             >
               <div className="product-division">

@@ -1,7 +1,13 @@
-import { Button } from "antd";
+import { Button, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  LinkedinOutlined,
+  TwitterOutlined,
+} from "@ant-design/icons";
 
 const Footer2: React.FC = () => {
   const navigate = useNavigate();
@@ -9,7 +15,7 @@ const Footer2: React.FC = () => {
     facebook: "",
     instagram: "",
     twitter: "",
-    linkedin: ""
+    linkedin: "",
   });
 
   const getData = async () => {
@@ -34,47 +40,63 @@ const Footer2: React.FC = () => {
     window.open(url, "_blank");
   };
 
-  const handleButtonClick = (url : string) => {
+  const handleButtonClick = (url: string) => {
     navigate(url);
-  }
+  };
 
   return (
     <div className="footer2-container">
       <div className="footer2-wrapper1">
         <div>
-          <Button size={"small"} style={{ fontWeight: "500" }} onClick={()=>{handleButtonClick('/')}}>
+          <Button
+            size={"small"}
+            style={{ fontWeight: "500" }}
+            onClick={() => {
+              handleButtonClick("/");
+            }}
+          >
             Home
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
-            onClick={()=>{handleButtonClick('/about-us')}}
+            onClick={() => {
+              handleButtonClick("/about-us");
+            }}
           >
             About us
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
-            onClick={()=>{handleButtonClick('/events')}}
+            onClick={() => {
+              handleButtonClick("/events");
+            }}
           >
             Events
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
-            onClick={()=>{handleButtonClick('/life-at-corpus/index')}}
+            onClick={() => {
+              handleButtonClick("/life-at-corpus/index");
+            }}
           >
             Life at corpus
           </Button>
           <Button
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
-            onClick={()=>{handleButtonClick('/contact')}}
+            onClick={() => {
+              handleButtonClick("/contact");
+            }}
           >
             Contact
           </Button>
         </div>
-        <div style={{textAlign:'center'}}>Copyright ©2024 Produced by company name</div>
+        <div style={{ textAlign: "center", fontSize: "12px" }}>
+          Copyright ©2024 Produced by Corpus Life Science Pvt. Ltd.
+        </div>
       </div>
       <div className="footer2-wrapper2">
         <Button size={"middle"}>Download Product catalog</Button>
@@ -89,8 +111,9 @@ const Footer2: React.FC = () => {
               openLink(socialLinks.facebook);
             }}
           >
-            Fb
+            <FacebookOutlined style={{ fontSize: "1.2rem" }} />
           </a>
+
           <a
             href="#"
             aria-label="Instagram"
@@ -99,7 +122,7 @@ const Footer2: React.FC = () => {
               openLink(socialLinks.instagram);
             }}
           >
-            In
+            <InstagramOutlined style={{ fontSize: "1.2rem" }} />
           </a>
           <a
             href="#"
@@ -109,7 +132,7 @@ const Footer2: React.FC = () => {
               openLink(socialLinks.twitter);
             }}
           >
-            Tw
+            <TwitterOutlined style={{ fontSize: "1.2rem" }} />
           </a>
           <a
             href="#"
@@ -119,10 +142,10 @@ const Footer2: React.FC = () => {
               openLink(socialLinks.linkedin);
             }}
           >
-            Ln
+            <LinkedinOutlined style={{ fontSize: "1.2rem" }} />
           </a>
         </div>
-        <div>Designed by: XYZ solutions</div>
+        <div style={{ fontSize: "10px" }}>Designed by: Bitsea Solutions</div>
       </div>
     </div>
   );

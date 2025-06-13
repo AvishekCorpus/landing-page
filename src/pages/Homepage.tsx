@@ -5,8 +5,17 @@ import HomepageManagement from "../components/Homepage/HomepageManagement/Homepa
 import HomepageProducts from "../components/Homepage/HomepageProducts/HomepageProducts";
 import TaglineSection from "../components/Homepage/TaglineSection/TaglineSection";
 
-interface Props {}
+export interface result {
+  result: HomepageData;
+}
 
+export interface HomepageData {
+  images: Image[];
+  divisions: Division[];
+  video: VideoState;
+  products: Products[];
+  management: Management[];
+}
 export interface Image {
   src: string;
   caption: string;
@@ -15,7 +24,7 @@ export interface Image {
 export interface Division {
   imageUrl: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 export interface VideoState {
@@ -26,7 +35,7 @@ export interface VideoState {
 export interface Products {
   title: string;
   division: string;
-  imageUrl: string;
+  imagesUrl: string;
 }
 
 export interface Management {
@@ -36,7 +45,7 @@ export interface Management {
   description: string;
 }
 
-const Homepage: React.FC<Props> = () => {
+const Homepage: React.FC = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [divisions, setDivisions] = useState<Division[]>([]);
   const [videoState, setVideoState] = useState<VideoState | null>(null);
@@ -44,7 +53,7 @@ const Homepage: React.FC<Props> = () => {
   const [managementData, setManagementData] = useState<Management[]>([]);
 
   const getData = async () => {
-    const query = encodeURIComponent(`*[_type == "homepage"][0] {
+    const query = encodeURIComponent(`*[_type == "home"][0] {
       images[] {
         asset -> {
           _id,
@@ -52,31 +61,19 @@ const Homepage: React.FC<Props> = () => {
         },
         caption
       },
-      divisions[] {
-        image {
-          asset -> {
-            url
-          }
-        },
-        title,
-        description
+      divisions[]-> {
+        name,
+        description,
+        "imageUrl": image.asset->url
       },
       video {
-        videoFile {
-          asset -> {
-            url
-          }
-        },
+        "url": videoFile.asset->url,
         description
       },
-      products[] {
-          title,
-          division,
-          imageUrl {
-            asset->{
-              url
-            }
-          }
+      products[]-> {
+          name,
+          "imagesUrl": images[0].asset->url,      
+
       },
       management[] {
         name,
@@ -90,7 +87,9 @@ const Homepage: React.FC<Props> = () => {
       }
     }`);
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
-    const res = await fetch(url).then((res) => res.json());
+    const res: result = await fetch(url).then((res) => res.json());
+
+    console.log(res);
 
     if (res?.result) {
       setImages(transformImages(res.result));
@@ -101,37 +100,40 @@ const Homepage: React.FC<Props> = () => {
     }
   };
 
-  const transformImages = (data: any): Image[] => {
+  const transformImages = (data: HomepageData): Image[] => {
     return data?.images?.map((image: any) => ({
       src: image?.asset?.url || "",
       caption: image.caption || "No caption available",
     }));
   };
 
-  const transformDivisions = (data: any): Division[] => {
-    return data?.divisions?.map((division: any) => ({
-      imageUrl: division.image.asset.url,
+  const transformDivisions = (data: HomepageData): Division[] => {
+    return data?.divisions?.map((division: Division) => ({
+      imageUrl: division.imageUrl,
       title: division.title,
-      description: division.description,
+      description:
+        (division.description
+          ? division.description.split(" ").slice(0, 10).join(" ")
+          : "No description available") + "...",
     }));
   };
 
-  const transformVideo = (videoData: any): VideoState => {
+  const transformVideo = (videoData: VideoState): VideoState => {
     return {
-      url: videoData?.videoFile?.asset?.url || "",
+      url: videoData?.url || "",
       description: videoData?.description || "No description available",
     };
   };
 
-  function transformProductsResponse(products: any) {
-    return products?.map((product: any) => ({
+  function transformProductsResponse(products: Products[]) {
+    return products?.map((product: Products) => ({
       title: product?.title,
       division: product?.division,
-      imageUrl: product?.imageUrl?.asset?.url,
+      imagesUrl: product?.imagesUrl || "https://via.placeholder.com/150",
     }));
   }
 
-  function transformManagementData(management: any) {
+  function transformManagementData(management: Management[]) {
     return management?.map((item: any) => ({
       name: item?.name,
       position: item?.position,

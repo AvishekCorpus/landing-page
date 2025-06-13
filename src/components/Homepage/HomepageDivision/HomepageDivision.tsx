@@ -53,14 +53,13 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
     window.addEventListener("resize", updateSlidesToShow);
     window.addEventListener("resize", updateCardWidth);
 
-    console.log("Divisions",cardData);
     return () => {
       window.removeEventListener("resize", updateSlidesToShow);
       window.removeEventListener("resize", updateCardWidth);
     };
   }, []);
 
-  if ( !cardData || cardData.length === 0) {
+  if (!cardData || cardData.length === 0) {
     return (
       <div className="featured-product-container">
         <div className="featured-title">
@@ -81,10 +80,15 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
           {/* Skeleton loaders mimicking cards */}
           {[...Array(slidesToShow)].map((_, index) => (
             <div key={index} className="featured-card">
-               <Col key={index} xs={24} sm={12} md={8} lg={6}>
+              <Col key={index} xs={24} sm={12} md={8} lg={6}>
                 <Card
                   style={{ width: 220, margin: "2rem auto" }}
-                  cover={<Skeleton.Image active style={{ height: 150, width:"100%" }} />}
+                  cover={
+                    <Skeleton.Image
+                      active
+                      style={{ height: 150, width: "100%" }}
+                    />
+                  }
                   loading
                   actions={[<Skeleton.Button active />]}
                 >
@@ -115,7 +119,7 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
         slidesToShow={slidesToShow}
         slidesToScroll={1}
       >
-        {cardData.map((card:any ,index : any) => (
+        {cardData.map((card: any, index: any) => (
           <div key={index} className="featured-card">
             <Card
               title={

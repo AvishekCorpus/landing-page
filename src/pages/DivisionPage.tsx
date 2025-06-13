@@ -6,6 +6,7 @@ import "./styles/division.css";
 export interface Division {
   _id?: string;
   description?: string;
+  imageUrl?: string;
   name: string;
   products?: Product[];
 }
@@ -45,6 +46,7 @@ const DivisionPage = () => {
             encodeURIComponent(`*[_type == "division" && name == $name][0]{
             name,
             description,
+            "imageUrl": image.asset -> url,
             products[]->{
               name,
               description,
@@ -117,9 +119,7 @@ const DivisionPage = () => {
     <div>
       <PageHeadingCard
         image={{
-          src:
-            divisionData?.products?.[0]?.images?.[0]?.asset?.url ||
-            "https://via.placeholder.com/150",
+          src: divisionData?.imageUrl || "https://via.placeholder.com/150",
           description: divisionData?.description || "",
         }}
         title={divisionData?.name || name || ""}

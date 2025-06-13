@@ -4,8 +4,31 @@ import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import PageHeadingCard from "../../components/shared/PageHeadingCard/PageHeadingCard";
 import "../styles/teamcorpus.css";
 
+export interface LifeCorpusData {
+  teamCorpus: TeamCorpus;
+}
+
+export interface TeamCorpus {
+  teamMembers: TeamMember[];
+  mainImage: MainImage;
+  pageImage: PageImage;
+  pageImageDescription: string;
+}
+
+export interface TeamMember {
+  imageUrl: string;
+}
+
+export interface MainImage {
+  imageUrl: string;
+}
+
+export interface PageImage {
+  imageUrl: string;
+}
+
 const LifeAtCorpusTeam = () => {
-  const [cardData, setCardData] = useState([]);
+  const [cardData, setCardData] = useState<TeamMember[]>();
   const [pageData, setPageData] = useState({
     image: "",
     description: "",
@@ -112,7 +135,7 @@ const LifeAtCorpusTeam = () => {
         slidesToShow={slidesToShow}
         slidesToScroll={1}
       >
-        {cardData?.map((card: any, index) => (
+        {cardData?.map((card, index) => (
           <div key={index} className="featured-card">
             <img
               style={{ width: cardWidth, margin: "0 auto" }}
