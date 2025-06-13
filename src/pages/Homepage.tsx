@@ -112,7 +112,7 @@ const Homepage: React.FC = () => {
   const transformDivisions = (data: HomepageData): Division[] => {
     return data?.divisions?.map((division: any) => ({
       imageUrl: division.imageUrl,
-      title: division.name.slice(0, 20) + "...",
+      title: division.name,
       description:
         (division.description
           ? division.description.split(" ").slice(0, 10).join(" ")

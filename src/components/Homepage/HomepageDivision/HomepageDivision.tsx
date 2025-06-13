@@ -125,7 +125,9 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
             <Card
               title={
                 <div className="card-header">
-                  <span className="card-title">{card.title}</span>
+                  <span className="card-title">
+                    {card.title.slice(0, 20) + "..."}
+                  </span>
                   <Link to={`/division/${card.title}`} className="card-more">
                     More
                   </Link>
