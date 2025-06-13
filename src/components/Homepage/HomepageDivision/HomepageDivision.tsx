@@ -2,6 +2,7 @@ import { Card, Carousel, Col, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import "../HomepageProducts/style.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   cardData: any;
@@ -125,9 +126,12 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
               title={
                 <div className="card-header">
                   <span className="card-title">{card.title}</span>
-                  <a href="#" className="card-more">
+                  <Link to={`/division/${card.title}`} className="card-more">
                     More
-                  </a>
+                  </Link>
+                  {/* <a href="/division/" className="card-more">
+                    More
+                  </a> */}
                 </div>
               }
               hoverable
@@ -135,7 +139,7 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
               style={{ width: cardWidth, margin: "0 auto" }}
             >
               <div className="product-division">
-                <div>Division</div>
+                {/* <div>Division</div> */}
                 <div>{card.description}</div>
               </div>
             </Card>

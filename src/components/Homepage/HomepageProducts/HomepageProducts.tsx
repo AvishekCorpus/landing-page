@@ -3,6 +3,7 @@ import "./style.css";
 import { Card, Carousel, Col, Skeleton } from "antd";
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import type { Products } from "../../../pages/Homepage";
+import { Link } from "react-router-dom";
 
 interface Props {
   cardData: Products[] | null;
@@ -125,10 +126,10 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
             <Card
               title={
                 <div className="card-header">
-                  <span className="card-title">{card.title}</span>
-                  <a href="#" className="card-more">
+                  <span className="card-title">{card.name}</span>
+                  <Link to={`/products/${card.id}`} className="card-more">
                     More
-                  </a>
+                  </Link>
                 </div>
               }
               hoverable
@@ -136,8 +137,8 @@ const HomepageProducts: React.FC<Props> = ({ cardData }) => {
               style={{ width: cardWidth, margin: "0 auto" }}
             >
               <div className="product-division">
-                <div>Division</div>
-                <div>{card.division}</div>
+                {/* <div>Division</div> */}
+                <div>{card.description}</div>
               </div>
             </Card>
           </div>

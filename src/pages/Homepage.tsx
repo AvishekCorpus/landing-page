@@ -33,8 +33,9 @@ export interface VideoState {
 }
 
 export interface Products {
-  title: string;
-  division: string;
+  id: string;
+  name: string;
+  description: string;
   imagesUrl: string;
 }
 
@@ -71,6 +72,7 @@ const Homepage: React.FC = () => {
         description
       },
       products[]-> {
+          "id": _id,
           name,
           "imagesUrl": images[0].asset->url,      
 
@@ -108,9 +110,9 @@ const Homepage: React.FC = () => {
   };
 
   const transformDivisions = (data: HomepageData): Division[] => {
-    return data?.divisions?.map((division: Division) => ({
+    return data?.divisions?.map((division: any) => ({
       imageUrl: division.imageUrl,
-      title: division.title,
+      title: division.name.slice(0, 20) + "...",
       description:
         (division.description
           ? division.description.split(" ").slice(0, 10).join(" ")
@@ -125,10 +127,12 @@ const Homepage: React.FC = () => {
     };
   };
 
-  function transformProductsResponse(products: Products[]) {
+  function transformProductsResponse(products: Products[]): Products[] {
+    // console.log(products);
     return products?.map((product: Products) => ({
-      title: product?.title,
-      division: product?.division,
+      id: product?.id || "",
+      name: product?.name.slice(0, 20) + "...",
+      description: product?.description || "No description available",
       imagesUrl: product?.imagesUrl || "https://via.placeholder.com/150",
     }));
   }
