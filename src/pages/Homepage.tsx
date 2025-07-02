@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HomepageDivision from "../components/Homepage/HomepageDivision/HomepageDivision";
 import HomepageImages from "../components/Homepage/HomepageImages/HomepageImages";
-import HomepageManagement from "../components/Homepage/HomepageManagement/HomepageManagement";
+// import HomepageManagement from "../components/Homepage/HomepageManagement/HomepageManagement";
 import HomepageProducts from "../components/Homepage/HomepageProducts/HomepageProducts";
 import TaglineSection from "../components/Homepage/TaglineSection/TaglineSection";
 
@@ -51,7 +51,7 @@ const Homepage: React.FC = () => {
   const [divisions, setDivisions] = useState<Division[]>([]);
   const [videoState, setVideoState] = useState<VideoState | null>(null);
   const [cardData, setCardData] = useState<Products[] | null>(null);
-  const [managementData, setManagementData] = useState<Management[]>([]);
+  // const [managementData, setManagementData] = useState<Management[]>([]);
 
   const getData = async () => {
     const query = encodeURIComponent(`*[_type == "home"][0] {
@@ -98,7 +98,7 @@ const Homepage: React.FC = () => {
       setDivisions(transformDivisions(res.result));
       setVideoState(transformVideo(res.result.video));
       setCardData(transformProductsResponse(res?.result.products));
-      setManagementData(transformManagementData(res?.result.management));
+      // setManagementData(transformManagementData(res?.result.management));
     }
   };
 
@@ -137,17 +137,17 @@ const Homepage: React.FC = () => {
     }));
   }
 
-  function transformManagementData(management: Management[]) {
-    return management?.map((item: any) => ({
-      name: item?.name,
-      position: item?.position,
-      image:
-        item?.image && item?.image?.asset
-          ? item?.image?.asset?.url
-          : "https://via.placeholder.com/100",
-      description: item.description,
-    }));
-  }
+  // function transformManagementData(management: Management[]) {
+  //   return management?.map((item: any) => ({
+  //     name: item?.name,
+  //     position: item?.position,
+  //     image:
+  //       item?.image && item?.image?.asset
+  //         ? item?.image?.asset?.url
+  //         : "https://via.placeholder.com/100",
+  //     description: item.description,
+  //   }));
+  // }
 
   useEffect(() => {
     document.title = "Home | Corpus Life Science";
@@ -157,10 +157,10 @@ const Homepage: React.FC = () => {
   return (
     <div>
       <HomepageImages images={images} />
-      <HomepageDivision cardData={divisions} />
       <TaglineSection videoState={videoState} />
+      <HomepageDivision cardData={divisions} />
       <HomepageProducts cardData={cardData} />
-      <HomepageManagement management managementData={managementData} />
+      {/* <HomepageManagement management managementData={managementData} /> */}
     </div>
   );
 };

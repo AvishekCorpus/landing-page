@@ -30,16 +30,9 @@ export const menuItems: MenuItem[] = [
   //     { name: "Enzymes & Pre-Probiotics", route: "/division/Enzymes & Pre-Probiotics" },
   //   ],
   // },
-
   {
-    name: "Life at Corpus",
-    route: "/life-at-corpus",
-    submenu: [
-      { name: "Life at Corpus", route: "/life-at-corpus" },
-      { name: "Team Corpus", route: "/life-at-corpus/team" },
-      { name: "Work with us", route: "/life-at-corpus/work-with-us" },
-      { name: "Training & Development", route: "/life-at-corpus/training" },
-    ],
+    name: "Home",
+    route: "/",
   },
   {
     name: "About Us",
@@ -49,6 +42,4 @@ export const menuItems: MenuItem[] = [
       { name: "Vision & mission", route: "/vision-and-mission" },
     ],
   },
-  { name: "Events", route: "/events" },
-  { name: "Contact", route: "/contact" },
 ];

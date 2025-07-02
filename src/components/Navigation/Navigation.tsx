@@ -37,12 +37,35 @@ const Navigation: React.FC = () => {
           }
 
           setMenuData([
+            ...menuData,
             {
               name: "Brand Portfolio",
               route: "/division",
               submenu: [...data.result],
             },
-            ...menuData,
+            {
+              name: "Life at Corpus",
+              route: "/life-at-corpus",
+              submenu: [
+                { name: "Life at Corpus", route: "/life-at-corpus" },
+                { name: "Team Corpus", route: "/life-at-corpus/team" },
+                // { name: "Work with us", route: "/life-at-corpus/work-with-us" },
+                {
+                  name: "Training & Development",
+                  route: "/life-at-corpus/training",
+                },
+              ],
+            },
+            // {
+            //   name: "About Us",
+            //   route: "/about-us",
+            //   submenu: [
+            //     { name: "About us", route: "/about-us" },
+            //     { name: "Vision & mission", route: "/vision-and-mission" },
+            //   ],
+            // },
+            { name: "Events", route: "/events" },
+            { name: "Contact", route: "/contact" },
           ]);
         } catch (err) {
           console.log("An unexpected error occurred.", err);

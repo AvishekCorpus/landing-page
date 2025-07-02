@@ -11,7 +11,7 @@ const LifeAtCorpus: React.FC = () => {
     description: "",
   });
   const [teamCorpusDescription, setTeamCorpusDesc] = useState("");
-  const [workwithusDescription, setWorkwithusDescription] = useState("");
+  // const [workwithusDescription, setWorkwithusDescription] = useState("");
   const [rewardsSection, setRewardsSection] = useState({
     sectionHeading: "",
     sectionDescription: "",
@@ -77,14 +77,14 @@ const LifeAtCorpus: React.FC = () => {
     }`);
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
-    var result = res?.result?.lifeAtCorpusPage;
+    const result = res?.result?.lifeAtCorpusPage;
     // console.log(res?.result);
     setPageData({
       image: result?.pageImage?.imageUrl,
       description: result?.pageImageDescription,
     });
     setTeamCorpusDesc(result?.teamCorpusDescription);
-    setWorkwithusDescription(result?.workWithUsDescription);
+    // setWorkwithusDescription(result?.workWithUsDescription);
     setRewardsSection(result?.rewardsAndRecognition);
     setPolicySection(result?.policy);
     setInspiringPioneer(result?.inspiringPioneer);
@@ -116,7 +116,7 @@ const LifeAtCorpus: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="lifeatcorpus-workwithus">
+      {/* <div className="lifeatcorpus-workwithus">
         <div className="lifeatcorpus-workwithus-heading">
           <div className="lifeatcorpus-heading">Work with us</div>
         </div>
@@ -137,7 +137,7 @@ const LifeAtCorpus: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="lifeatcorpus-rewards">
         <div className="lifeatcorpus-heading">Rewards & recognition</div>
         <div className="lifeatcorpus-description">
@@ -157,7 +157,7 @@ const LifeAtCorpus: React.FC = () => {
       <div className="lifeatcorpus-policies">
         <div className="lifeatcorpus-policies-header">
           <div className="lifeatcorpus-policies-title">
-            <div className="lifeatcorpus-heading">Policies</div>
+            <div className="lifeatcorpus-heading">Leadership talks</div>
           </div>
           <div
             className="lifeatcorpus-description"

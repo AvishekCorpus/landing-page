@@ -145,7 +145,9 @@ const Footer2: React.FC = () => {
             <LinkedinOutlined style={{ fontSize: "1.2rem" }} />
           </a>
         </div>
-        <div style={{ fontSize: "10px" }}>Designed by: Bitsea Solutions</div>
+        <div style={{ fontSize: "12px" }}>
+          Designed by: Corpus Core Technology Consultants
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AboutUsLeadership from "../../components/AboutUs/AboutUsLeadership/AboutUsLeadership";
+// import AboutUsLeadership from "../../components/AboutUs/AboutUsLeadership/AboutUsLeadership";
 import AboutUsVisionMission from "../../components/AboutUs/AboutUsVisionMission/AboutUsVisionMission";
 import PageHeadingCard from "../../components/shared/PageHeadingCard/PageHeadingCard";
 import "../styles/aboutus.css";
@@ -177,7 +177,7 @@ const AboutUsPage: React.FC = () => {
             vision={aboutUsData.vision}
             mission={aboutUsData.mission}
           />
-          <AboutUsLeadership description={aboutUsData.leadership.description} />
+          {/* <AboutUsLeadership description={aboutUsData.leadership.description} /> */}
         </>
       ) : (
         <p>Loading...</p>
