@@ -11,7 +11,9 @@ import {
 
 const Footer2: React.FC = () => {
   const navigate = useNavigate();
+  const [productCatelog, setProductCatelog] = useState("");
   const [socialLinks, setSocialLinks] = useState({
+    url: "",
     facebook: "",
     instagram: "",
     twitter: "",
@@ -19,7 +21,8 @@ const Footer2: React.FC = () => {
   });
 
   const getData = async () => {
-    const query = encodeURIComponent(`*[_type == "homepage"][0]{
+    const query = encodeURIComponent(`*[_type == "home"][0]{
+      "url": productCatelog.asset->url,
       socialLinks {
         facebook,
         instagram,
@@ -29,6 +32,7 @@ const Footer2: React.FC = () => {
     }`);
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
+    setProductCatelog(res?.result?.url || "");
     setSocialLinks(res?.result?.socialLinks || {});
   };
 
@@ -49,6 +53,8 @@ const Footer2: React.FC = () => {
       <div className="footer2-wrapper1">
         <div>
           <Button
+            variant="link"
+            color="orange"
             size={"small"}
             style={{ fontWeight: "500" }}
             onClick={() => {
@@ -58,6 +64,8 @@ const Footer2: React.FC = () => {
             Home
           </Button>
           <Button
+            variant="link"
+            color="orange"
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
             onClick={() => {
@@ -67,6 +75,8 @@ const Footer2: React.FC = () => {
             About us
           </Button>
           <Button
+            variant="link"
+            color="orange"
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
             onClick={() => {
@@ -76,15 +86,19 @@ const Footer2: React.FC = () => {
             Events
           </Button>
           <Button
+            variant="link"
+            color="orange"
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
             onClick={() => {
-              handleButtonClick("/life-at-corpus/index");
+              handleButtonClick("/life-at-corpus");
             }}
           >
             Life at corpus
           </Button>
           <Button
+            variant="link"
+            color="orange"
             size={"small"}
             style={{ marginLeft: "0.5rem", fontWeight: "500" }}
             onClick={() => {
@@ -99,7 +113,16 @@ const Footer2: React.FC = () => {
         </div>
       </div>
       <div className="footer2-wrapper2">
-        <Button size={"middle"}>Download Product catalog</Button>
+        <Button
+          variant="link"
+          color="cyan"
+          size={"middle"}
+          onClick={() => {
+            window.open(productCatelog, "_blank");
+          }}
+        >
+          Download Product catalog
+        </Button>
       </div>
       <div className="footer2-wrapper3">
         <div className="social-icons">

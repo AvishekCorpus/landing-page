@@ -91,7 +91,7 @@ const Homepage: React.FC = () => {
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res: result = await fetch(url).then((res) => res.json());
 
-    console.log(res);
+    // console.log(res);
 
     if (res?.result) {
       setImages(transformImages(res.result));
@@ -151,6 +151,7 @@ const Homepage: React.FC = () => {
 
   useEffect(() => {
     document.title = "Home | Corpus Life Science";
+    window.scrollTo(0, 0);
     getData();
   }, []);
 

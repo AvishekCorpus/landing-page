@@ -39,7 +39,7 @@ export const menuItems: MenuItem[] = [
     route: "/about-us",
     submenu: [
       { name: "About us", route: "/about-us" },
-      { name: "Vision & mission", route: "/vision-and-mission" },
+      { name: "Vision & mission", route: "/about-us" },
     ],
   },
 ];

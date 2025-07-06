@@ -6,6 +6,7 @@
   justify-content: space-between;
   padding-bottom: 1rem;
 }
+
 .footer2-wrapper1 {
   height: 100%;
   flex: 2;
@@ -13,11 +14,13 @@
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+
   div:nth-child(2) {
     margin-top: 2rem;
     color: #fff;
   }
 }
+
 .footer2-wrapper2 {
   height: 100%;
   flex: 0.3;
@@ -26,6 +29,7 @@
   justify-content: center;
   flex-direction: column;
 }
+
 .footer2-wrapper3 {
   height: 100%;
   flex: 2;
@@ -33,6 +37,7 @@
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
+
   div:nth-child(2) {
     margin-top: 2rem;
     color: #fff;
@@ -43,6 +48,7 @@
   display: flex;
   justify-content: flex-start;
   gap: 15px;
+
   a {
     color: white;
     text-decoration: none;
@@ -50,37 +56,69 @@
 }
 
 @media (max-width: 780px) {
-    .footer2-container {
-        flex-direction: column;
-    }
-    .footer2-wrapper2{
-        margin-top: 2rem;
-    }
-    .footer2-wrapper3{
-        margin-top: 2rem;
-        align-items: center;
-    }
+  .footer2-container {
+    flex-direction: column;
+  }
+
+  .footer2-wrapper2 {
+    margin-top: 2rem;
+  }
+
+  .footer2-wrapper3 {
+    margin-top: 2rem;
+    align-items: center;
+  }
 }
 
 @media (max-width: 500px) {
-    .footer2-container {
-        flex-direction: column;
+  .footer2-container {
+    flex-direction: column;
+  }
+
+  .footer2-wrapper1 {
+    div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .footer2-wrapper1{
-        div:first-child {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 100%;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+  }
+
+  .footer2-wrapper2 {
+    margin-top: 2rem;
+  }
+
+  .footer2-wrapper3 {
+    margin-top: 2rem;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer2-container {
+    flex-direction: column;
+  }
+
+  .footer2-wrapper1 {
+    div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .footer2-wrapper2{
-        margin-top: 2rem;
-    }
-    .footer2-wrapper3{
-        margin-top: 2rem;
-        align-items: center;
-    }
+  }
+
+  .footer2-wrapper2 {
+    margin-top: 2rem;
+  }
+
+  .footer2-wrapper3 {
+    margin-top: 2rem;
+    align-items: center;
+  }
+
 }

@@ -4,6 +4,7 @@ import PoliciesCarousel from "../../components/LifeAtCorpus/PoliciesCarousel";
 import RewardCard from "../../components/LifeAtCorpus/RewardCard";
 import PageHeadingCard from "../../components/shared/PageHeadingCard/PageHeadingCard";
 import "../styles/lifeatcorpus.css";
+import GenericCarousel from "../../components/LifeAtCorpus/GenericCarousel";
 
 const LifeAtCorpus: React.FC = () => {
   const [pageData, setPageData] = useState({
@@ -21,13 +22,19 @@ const LifeAtCorpus: React.FC = () => {
     policyDescription: "",
     policyCards: [],
   });
+
+  // const [inspiringPioneerSection, setInspiringPioneerSection] = useState({
+  //   Description: "",
+  //   Cards: [],
+  // });
+
   const [inspiringPioneer, setInspiringPioneer] = useState({
-    image: { imageUrl: "" },
     description: "",
+    cards: [],
   });
   const [ourCulture, setOurCulture] = useState({
-    image: { imageUrl: "" },
     description: "",
+    cards: [],
   });
 
   const navigate = useNavigate();
@@ -61,24 +68,32 @@ const LifeAtCorpus: React.FC = () => {
             }
           }
         },
-        inspiringPioneer {
-          image {
+        inspiringPioneers {
+          description,
+          cards[] {
+            title,
+            description,
+            image {
               "imageUrl": asset->url
-          },
-          description
+            }
+          }
         },
-        ourCulture {
-          image {
+        ourCultures {
+          description,
+          cards[] {
+            title,
+            description,
+            image {
               "imageUrl": asset->url
-          },
-          description
+            }
+          }
         }
       }
     }`);
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
     const result = res?.result?.lifeAtCorpusPage;
-    // console.log(res?.result);
+    console.log(res?.result);
     setPageData({
       image: result?.pageImage?.imageUrl,
       description: result?.pageImageDescription,
@@ -87,8 +102,10 @@ const LifeAtCorpus: React.FC = () => {
     // setWorkwithusDescription(result?.workWithUsDescription);
     setRewardsSection(result?.rewardsAndRecognition);
     setPolicySection(result?.policy);
-    setInspiringPioneer(result?.inspiringPioneer);
-    setOurCulture(result?.ourCulture);
+    setInspiringPioneer(result?.inspiringPioneers);
+    console.log("Inspiring Pioneers", result?.inspiringPioneers);
+    console.log("Our Cultures", result?.ourCultures);
+    setOurCulture(result?.ourCultures);
   };
   useEffect(() => {
     document.title = "Life at Corpus | Corpus Life Science";
@@ -168,7 +185,38 @@ const LifeAtCorpus: React.FC = () => {
         </div>
         <PoliciesCarousel policies={policySection?.policyCards} />
       </div>
-      <div className="lifeatcorpus-heading" style={{ marginLeft: "2rem" }}>
+
+      <div className="lifeatcorpus-policies">
+        <div className="lifeatcorpus-policies-header">
+          <div className="lifeatcorpus-policies-title">
+            <div className="lifeatcorpus-heading">Inspiring Pioneers</div>
+          </div>
+          <div
+            className="lifeatcorpus-description"
+            style={{ fontWeight: "bold" }}
+          >
+            {inspiringPioneer.description || "Inspiring Pioneers"}
+          </div>
+        </div>
+        <GenericCarousel section={inspiringPioneer?.cards} />
+      </div>
+
+      <div className="lifeatcorpus-policies">
+        <div className="lifeatcorpus-policies-header">
+          <div className="lifeatcorpus-policies-title">
+            <div className="lifeatcorpus-heading">Our Culture</div>
+          </div>
+          <div
+            className="lifeatcorpus-description"
+            style={{ fontWeight: "bold" }}
+          >
+            {ourCulture?.description || "Our Culture"}
+          </div>
+        </div>
+        <PoliciesCarousel policies={ourCulture.cards} />
+      </div>
+
+      {/* <div className="lifeatcorpus-heading" style={{ marginLeft: "2rem" }}>
         Inspiring Pioneers
       </div>
       <div className="lifeatcorpus-inspiring-pioneer">
@@ -208,7 +256,7 @@ const LifeAtCorpus: React.FC = () => {
             <img src={ourCulture?.image?.imageUrl} />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

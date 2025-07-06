@@ -63,8 +63,8 @@ const ProductPage = () => {
         }
       })
       .catch((err) => {
-      setError(err.message || "An unexpected error occurred.");
-    });
+        setError(err.message || "An unexpected error occurred.");
+      });
   }, [id]);
 
   useEffect(() => {

@@ -4,17 +4,17 @@ import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import "./style.css";
 // const { Title, Paragraph } = Typography;
 
-interface PolicyCard {
+interface Card {
   title: string;
   description: string;
   image: any;
 }
 
 interface Props {
-  policies: PolicyCard[];
+  section: Card[];
 }
 
-const PoliciesCarousel: React.FC<Props> = ({ policies }) => {
+const GenericCarousel: React.FC<Props> = ({ section }) => {
   const [slidesToShow, setSlidesToShow] = useState(5);
   const [cardWidth, setCardWidth] = useState(300);
 
@@ -55,6 +55,7 @@ const PoliciesCarousel: React.FC<Props> = ({ policies }) => {
   };
 
   useEffect(() => {
+    console.log(section);
     updateSlidesToShow();
     updateCardWidth();
     window.addEventListener("resize", updateSlidesToShow);
@@ -79,7 +80,7 @@ const PoliciesCarousel: React.FC<Props> = ({ policies }) => {
       slidesToShow={slidesToShow}
       slidesToScroll={1}
     >
-      {policies?.map((card, index) => (
+      {section?.map((card, index) => (
         <div key={index} className="policy-card">
           <Card
             hoverable
@@ -109,4 +110,4 @@ const PoliciesCarousel: React.FC<Props> = ({ policies }) => {
   );
 };
 
-export default PoliciesCarousel;
+export default GenericCarousel;
