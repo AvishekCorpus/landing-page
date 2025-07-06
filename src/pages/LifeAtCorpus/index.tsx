@@ -93,7 +93,7 @@ const LifeAtCorpus: React.FC = () => {
     const url = `https://tr3yh6z2.api.sanity.io/v1/data/query/production?query=${query}`;
     const res = await fetch(url).then((res) => res.json());
     const result = res?.result?.lifeAtCorpusPage;
-    console.log(res?.result);
+    // console.log(res?.result);
     setPageData({
       image: result?.pageImage?.imageUrl,
       description: result?.pageImageDescription,
@@ -103,8 +103,6 @@ const LifeAtCorpus: React.FC = () => {
     setRewardsSection(result?.rewardsAndRecognition);
     setPolicySection(result?.policy);
     setInspiringPioneer(result?.inspiringPioneers);
-    console.log("Inspiring Pioneers", result?.inspiringPioneers);
-    console.log("Our Cultures", result?.ourCultures);
     setOurCulture(result?.ourCultures);
   };
   useEffect(() => {

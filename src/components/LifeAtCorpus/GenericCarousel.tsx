@@ -55,7 +55,7 @@ const GenericCarousel: React.FC<Props> = ({ section }) => {
   };
 
   useEffect(() => {
-    console.log(section);
+    // console.log(section);
     updateSlidesToShow();
     updateCardWidth();
     window.addEventListener("resize", updateSlidesToShow);
